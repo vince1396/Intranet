@@ -50,7 +50,7 @@
 <!-- ====================================================================================================================================================== -->
                                                           <!-- INSCRITPTION AVEC AVATAR -->
 <?php
-  function signin_avatar($login, $email, $mdp, $confirm, $avatar, $bdd)
+  function signinAvatar($login, $email, $mdp, $confirm, $avatar, $bdd)
   {
       if(empty($login) OR empty($email) OR empty($mdp) OR empty($confirm))
       {
@@ -182,15 +182,43 @@
 <!-- ====================================================================================================================================================== -->
                                                             <!-- CONNEXION MUTLTIPLE -->
 <?php
-  function mutiple_login($email, $mdp, $table, $bdd)
+  function mutipleLogin($email, $mdp, $table, $bdd)
   {
-    
+    if(empty($login) OR empty($mdp))
+    {
+      $error = "Veuillez remplir tous les champs du formulaire";
+      return $error;
+    }
+    else
+    {
+      $req = $bdd->prepare("SELECT * FROM :table WHERE login = :login AND mdp = :mdp");
+      $req->bindValue('login', $login, PDO::PARAM_STR);
+      $req->bindValue('mdp', $mdp, PDO::PARAM_STR);
+      $req->bindValue('table', $table, PDO::PARAM_STR);
+      $req->execute();
+
+      $rep = $req->fetch();
+
+      if($rep)
+      {
+        $_SESSION['id'] = $rep['id_u'];
+        $_SESSION['login'] = $rep['login'];
+        $_SESSION['email'] = $rep['email'];
+        $_SESSION['lvl'] = $rep['lvl'];
+        header("Location:index.php");
+      }
+      else
+      {
+        $error = "Mauvais identifiants";
+        return $error;
+      }
+    }
   }
 ?>
 <!-- ====================================================================================================================================================== -->
                                                               <!-- MODIFIER EMAIL -->
 <?php
-  function update_email($email, $id_u, $bdd)
+  function updateEmail($email, $id_u, $bdd)
   {
     if(empty($email))
     {
@@ -213,7 +241,7 @@
 <!-- ====================================================================================================================================================== -->
                                                           <!-- MODIFIER MOT DE PASSE -->
 <?php
-  function update_mdp($oldmdp, $mdp, $confirm, $id, $bdd)
+  function updateMdp($oldmdp, $mdp, $confirm, $id, $bdd)
   {
     $req = $bdd->prepare("SELECT mdp FROM user WHERE id_u = :id_u");
     $req->bindValue('id_u', $id, PDO::PARAM_INT);
@@ -257,7 +285,7 @@
 <!-- ====================================================================================================================================================== -->
                                                               <!-- MODIFIER AVATAR -->
 <?php
-  function update_avatar($avatar, $id, $bdd)
+  function updateAvatar($avatar, $id, $bdd)
   {
     if (isset($avatar['file']) AND $avatar['file']['error'] == 0)
     {
@@ -312,8 +340,67 @@
 ?>
 
 <!-- ====================================================================================================================================================== -->
-                                                      <!-- GENERATEUR SELECT FORM -->
+                                                        <!-- AJOUT USER MANUELLEMENT -->
 <?php
+  function addUser($email, $nom, $prenom, $table)
+  {
+    if(empty($email) OR empty($mdp) OR empty($prneom))
+    {
+      $error = "Veuillez remplir tous les champs du formulaire";
+      return $error;
+    }
+    else
+    {
+      $req = $bdd->prepare("SELECT * FROM eleve, prof WHERE email = :email");
+      $req->bindValue('email', $email, PDO::PARAM_STR);
+      $req->execute();
+
+      $rep = $req->fetch();
+
+      if($rep)
+      {
+        $error = "Email déja utilisé";
+        return $error;
+      }
+      else
+      {
+        $mdp = randomMdp();
+        $crypt = sha1($mdp);
+        $ip = $_SERVER['REMOTE_ADDR'];
+
+        $req = $bdd->prepare("INSERT INTO :table VALUES (NULL, :email, :mdp, :nom, :prenom, :ip, NULL)");
+        $req->bindValue('email', $email, PDO::PARAM_STR);
+        $req->bindValue('mdp', $mdp, PDO::PARAM_STR);
+        $req->bindValue('nom', $nom, PDO::PARAM_STR);
+        $req->bindValue('prenom', $prenom, PDO::PARAM_STR);
+        $req->bindValue('ip', $ip, PDO::PARAM_STR);
+        $req->execute();
+      }
+    }
+  }
+?>
+
+<!-- ====================================================================================================================================================== -->
+                                                             <!-- RANDOM PASSWORD -->
+<?php
+  function randomMdp()
+  {
+    $mdp = "";
+    $chaine = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for($i = 0; i < 8; i++)
+    {
+      $mdp .= $chaine[rand(0,51)];
+    }
+
+    $mdp = str_shuffle($mdp);
+
+    return $mdp;
+  }
+?>
+<!-- ====================================================================================================================================================== -->
+                                                          <!-- GENERATEUR SELECT FORM -->
+<?php /*
   function select($name, $values){
     $html = "<select class = 'form-control' name='$name' id='$name'>";
     foreach($values as $value){
@@ -322,12 +409,12 @@
     $html .="</select>";
 
     return $html;
-  }
+  } */
 ?>
 
 <!-- =============================================================================================================================== -->
 
-<?php
+<?php /*
   session_start();
   $pdo = dbConnect();
 
@@ -367,5 +454,5 @@
         $pdo->query("INSERT INTO ban (ip) VALUES ('userIP')");
       }
     }
-  }
+  } */
 ?>
