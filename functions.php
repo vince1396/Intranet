@@ -182,7 +182,7 @@
 <!-- ====================================================================================================================================================== -->
                                                             <!-- CONNEXION MUTLTIPLE -->
 <?php
-  function mutipleLogin($email, $mdp, $table, $bdd)
+  function mutipleLogin($email, $mdp, $table, $admin, $bdd)
   {
     if(empty($login) OR empty($mdp))
     {
@@ -191,7 +191,19 @@
     }
     else
     {
-      $req = $bdd->prepare("SELECT * FROM :table WHERE login = :login AND mdp = :mdp");
+      if($admin == 0)
+      {
+        $req = $bdd->prepare("SELECT * FROM :table WHERE login = :login AND mdp = :mdp");
+      }
+      elseif($admin == 1)
+      {
+        $req = $bdd->prepare("SELECT * FROM :table WHERE login = :login AND mdp = :mdp AND lvl = 1");
+      }
+      else
+      {
+        $error = "Wrong admin valor";
+      }
+
       $req->bindValue('login', $login, PDO::PARAM_STR);
       $req->bindValue('mdp', $mdp, PDO::PARAM_STR);
       $req->bindValue('table', $table, PDO::PARAM_STR);
