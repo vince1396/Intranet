@@ -1,7 +1,7 @@
 <!-- ====================================================================================================================================================== -->
                                                                 <!-- INSCRITPTION -->
 <?php
-  function signin($login, $email, $mdp, $confirm, $bdd)
+  function signIn($login, $email, $mdp, $confirm, $bdd)
   {
     if(empty($login) OR empty($email) OR empty($mdp) OR empty($confirm))
     {
@@ -37,9 +37,12 @@
           $req->bindValue('mdp', $mdp, PDO::PARAM_STR);
           $req->execute();
 
-          $_SESSION['login'] = $login;
-          $_SESSION['email'] = $email;
-          $_SESSION['lvl'] = 1;
+          $rep = $req->fetch();
+
+          $_SESSION['id'] = $bdd->lastInsertId();
+          $_SESSION['login'] = $rep['login'];
+          $_SESSION['email'] = $rep['email'];
+          $_SESSION['lvl'] = $rep['lvl'];
 
           header("Location:index.php");
         }
@@ -59,7 +62,7 @@
       }
       else
       {
-        if($_POST['mdp'] != $_POST['confirm'])
+        if($mdp != $confirm)
       {
           $error = "<div class ='alert alert-warning error col-lg-3'>Vos mots de passe ne correspondent pas</div>";
           return $error;
@@ -67,10 +70,11 @@
         else
         {
           $req = $bdd->prepare("SELECT * FROM user WHERE login = :login");
-          $req->execute(array(
-            'login'=>$login
-          ));
+          $req->bindValue('login', $login, PDO::PARAM_STR);
+          $req->execute();
+
           $resultat = $req->fetch();
+
           if($resultat)
           {
             $error = "<div class ='alert alert-warning error col-lg-3'>Le login est déja utilisé</div>";
@@ -98,15 +102,14 @@
                     $crypt = sha1($mdp);
 
                     $req = $bdd->prepare('INSERT INTO user (id_u, login, email, mdp, lvl, avatar) VALUES(NULL, :login, :email, :mdp, 1, :avatar)');
-                    $req->execute(array(
-                      'login' => $login,
-                      'email' => $email,
-                      'mdp' => $crypt,
-                      'avatar' =>$avatar
-                    ));
+                    $req->bindValue('login', $login, PDO::PARAM_STR);
+                    $req->bindValue('email', $email, PDO::PARAM_STR);
+                    $req->bindValue('mdp', $mdp, PDO::PARAM_STR);
+                    $req->bindValue('avatar', $avatar, PDO::PARAM_STR);
+                    $req->execute();
 
-                    $_SESSION['id'] = $bdd->lastInsertId(); ;
-                    $_SESSION['login'] = $_POST['login'];
+                    $_SESSION['id'] = $bdd->lastInsertId();
+                    $_SESSION['login'] = $login;
                     $_SESSION['avatar'] = $avatar;
                     $_SESSION['lvl'] = 1;
                     header("Location:index.php");
@@ -172,7 +175,10 @@
         $_SESSION['id'] = $resultat['id_u'];
         $_SESSION['login'] = $resultat['login'];
         $_SESSION['lvl'] = $resultat['lvl'];
-        $_SESSION['avatar'] = $resultat['avatar'];
+
+        if(isset($resultat['avatar']))
+          $_SESSION['avatar'] = $resultat['avatar'];
+
         header("Location:index.php");
       }
     }
@@ -202,6 +208,7 @@
       else
       {
         $error = "Wrong admin valor";
+        return $error;
       }
 
       $req->bindValue('login', $login, PDO::PARAM_STR);
@@ -354,7 +361,7 @@
 <!-- ====================================================================================================================================================== -->
                                                         <!-- AJOUT USER MANUELLEMENT -->
 <?php
-  function addUser($email, $nom, $prenom, $table)
+  function addUser($email, $nom, $prenom, $table, $bdd)
   {
     if(empty($email) OR empty($mdp) OR empty($prneom))
     {
