@@ -2,7 +2,7 @@
 <div class="container">
 
     <div class="row">
-        <div class="col-md-4 col-xs-6">
+        <div class="col-md-4 col-xs-12">
             <div class="case1">
                 <h3  class="role"><span class="glyphicon glyphicon-king"></span> Administrateurs</h3>
                 <br>
@@ -21,7 +21,7 @@
                 </form>
             </div>
         </div>
-        <div class="col-md-4 col-xs-6">
+        <div class="col-md-4 col-xs-12">
             <div class="case1"><h3 class="role"><span class="glyphicon glyphicon-queen"></span> Professeurs</h3><bR>
                 <form class="form-horizontal">
                     <div class="form-group">
@@ -38,7 +38,7 @@
                 </form>
             </div>
         </div>
-        <div class="col-md-4 col-xs-6">
+        <div class="col-md-4 col-xs-12">
             <div class="case1">
                 <h3  class="role"><span class="glyphicon glyphicon glyphicon-pawn"></span> Elèves</h3><BR>
                 <form class="form-horizontal">
