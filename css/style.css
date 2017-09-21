@@ -1,0 +1,233 @@
+body
+{
+    font-family: Arial;
+    background: #3164b5; 
+}
+
+.corps{
+    background:url("wall2.jpeg") no-repeat fixed center center/ 100% auto; 
+    height: calc(100%);
+}
+
+.case1
+{
+    background:rgba(30, 21, 56, 0.48) ;
+    margin-top: 200px;
+    height: 220px;
+    text-align: center;
+    vertical-align: center;
+    color: black;
+    box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7),
+            -1px 2px 20px rgba(255, 255, 255, 0.6) inset; 
+    /*border-radius: 6%; */
+    font-family: Arial;
+}
+
+.titre1
+{
+    background: black;
+    height: 50px;
+    padding-left: -15px;
+    padding-right: -15px;
+    text-align: center;
+    color: white;
+    font-size: x-large;
+}
+
+.bloc1
+{
+    height: 70px;
+    border: 1px solid black;
+    
+    background: white;
+    text-align: center;
+}
+
+.bloc2
+{
+    height: 30px;
+    background: #34495e;
+    border: 1px solid black;
+    color: white;
+    
+}
+
+nav ul li
+{
+    display: inline-block;
+    list-style: none;
+    margin-top: -22px;
+    margin-left: -5px;
+    font-size: large;
+    border: 2px solid grey;
+    height: 30px;
+    width: 180px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+nav ul li:hover
+{
+    background: #2c3e50;
+    color: darkcyan;
+    transition: 0.2s;
+}
+
+.href
+{
+    text-decoration: none;
+    color: white;
+}
+
+.bloc3
+{
+    height: 500px;
+    background: white;
+    border: 1px solid black;
+}
+
+.derniere_note
+{
+    border: 1px solid black;
+    width: 500px;
+    height: 300px;
+}
+
+.connexion
+{
+    margin-left: 65px;
+    margin-bottom: 20px;
+}
+
+.bouton_submit
+{
+    margin-left: 125px;
+}
+
+.role{
+    padding-top: 10px;
+    background: rgba(0, 0, 0, 0.47);
+    height: 40px;
+    color: white;
+}
+
+.test{
+    background: black;
+}
+
+.menu_admin{
+   
+    margin: auto;
+    margin-top: 150px;
+}
+
+.back_admin{
+    background: #3498db no-repeat fixed center center/ 100% auto; 
+    height: calc(100%);
+}
+
+.back_admin2{
+/*
+    background: #3498db no-repeat fixed center center/ 100% auto; 
+    height: calc(100%);
+*/
+    background:url("wall2.jpeg") no-repeat fixed center center/ 100% auto; 
+    height: calc(100%);
+    
+}
+
+.case2{
+        background:#2980b9 ;
+    height: 220px;
+    text-align: center;
+    vertical-align: center;
+    color: black;
+   
+    font-family: Arial;
+    margin-right: 10px;
+    border: 8px solid rgba(37, 37, 214, 0.49);
+    box-shadow: 1px 1px 12px black; 
+    
+}
+
+.case2:hover{
+   /* border: 10px solid rgba(37, 37, 214, 0.49);*/
+    font-size: 100px;
+    transition:0.3s;
+}
+
+.titre_admin{
+    font-size: xx-large;
+    text-align: center;
+    vertical-align: middle;
+    color: azure;
+    padding-top: 20px;
+}
+
+.titre_admin:hover{
+    transition: 0.3s;
+    font-size: 34px;
+    }
+
+.etoile{
+    color: yellow;
+    font-size: 60px;
+    margin-bottom: 5px;  
+}
+
+.etoile:hover{
+    transform: rotate(360deg);
+    transition: 0.5s;
+}
+
+.select_class{
+    margin-left: 10px;
+}
+
+.row1{
+    margin-top: 70px;
+}
+
+.onglet_eleve{
+    background: #5bc0de;
+    color: white;
+    font-size: large;
+    border: 1px solid #46b8da;
+}
+
+.onglet_eleve2{
+    background: white;
+    color: #5bc0de;
+    font-size: large;
+    border: 1px solid #46b8da;
+}
+
+.onglet_eleve3{
+    font-size: large;
+    color: white;
+}
+
+.bouton1{
+    margin-top: 10px;
+    margin-left: -4px;
+}
+
+.semestre{
+    margin-right: 10px;
+}
+
+.bouton2{
+    margin-top: 100px;
+    margin-left: 125px;
+    font-size:100px;
+}
+
+.bouton3{
+    margin-top: 12px;
+    margin-left: -4px;
+}
+
+.bouton_titre{
+    font-size:100px;
+    margin-left: 195px;
+}
