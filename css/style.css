@@ -216,6 +216,7 @@ nav ul li:hover
     font-size: large;
     border: 1px solid #46b8da;
     text-align:center;
+
 }
 
 .onglet_eleve2{
@@ -238,6 +239,14 @@ nav ul li:hover
             -1px 2px 20px rgba(255, 255, 255, 0.6) inset; 
 }
 
+.onglet_eleve4{
+    background: white;
+    color: #5bc0de;
+    font-size: large;
+    border-bottom: 3px solid #46b8da;
+    text-align:center;
+}
+
 .onglet_eleve3{
     font-size: large;
     color: white;
@@ -253,6 +262,7 @@ nav ul li:hover
     box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7),
             -1px 2px 20px rgba(255, 255, 255, 0.6) inset; 
     
+
 }
 
 .bouton1{
