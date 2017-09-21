@@ -1,7 +1,7 @@
 body
 {
     font-family: Arial;
-    background: #3498db ; 
+    background: #3498db ;
     overflow-x: hidden;
     margin:0;
     padding:0;
@@ -10,6 +10,8 @@ body
 .corps{
     background:url("wall2.jpeg") no-repeat fixed center center/ 100% auto; 
     height: calc(100%);
+    background-size: 100% 100%;
+    width:100%;
 }
 
 .case1
@@ -136,6 +138,8 @@ nav ul li:hover
 */
     background:url("wall2.jpeg") no-repeat fixed center center/ 100% auto; 
     height: calc(100%);
+    background-size: 100%;
+    height: 100% 100%;
     
 }
 
@@ -149,7 +153,8 @@ nav ul li:hover
     font-family: Arial;
     margin-right: 10px;
     border: 8px solid rgba(37, 37, 214, 0.49);
-    box-shadow: 1px 1px 12px black; 
+    box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7),
+            -1px 2px 20px rgba(255, 255, 255, 0.6) inset; 
     
 }
 
@@ -165,6 +170,10 @@ nav ul li:hover
     vertical-align: middle;
     color: azure;
     padding-top: 20px;
+}
+
+.selection_admin{
+   padding-bottom: 20px;
 }
 
 .titre_admin:hover{
@@ -188,7 +197,7 @@ nav ul li:hover
 }
 
 .row1{
-    margin-top: 70px;
+    margin-top: 10px;
 }
 
 .onglet_eleve{
@@ -197,15 +206,39 @@ nav ul li:hover
     font-size: large;
     border: 1px solid #46b8da;
     text-align:center;
+    box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7),
+            -1px 2px 20px rgba(255, 255, 255, 0.6) inset; 
 }
 
-.onglet_eleve2{
-    background: white;
-    color: #5bc0de;
+.titre_eleve{
+    background: #220faf;
+    color: white;
     font-size: large;
     border: 1px solid #46b8da;
     text-align:center;
+
 }
+
+.onglet_eleve2{
+    background: silver;
+    color: #0915a5;
+    font-size: large;
+    border: 1px solid #46b8da;
+    text-align:center;
+    box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7),
+            -1px 2px 20px rgba(255, 255, 255, 0.6) inset; 
+}
+
+.onglet_eleve4{
+    background: white;
+    color: #5bc0de;
+    font-size: large;
+    border-bottom: 3px solid #46b8da;
+    text-align:center;
+    box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7),
+            -1px 2px 20px rgba(255, 255, 255, 0.6) inset; 
+}
+
 .onglet_eleve4{
     background: white;
     color: #5bc0de;
@@ -220,9 +253,21 @@ nav ul li:hover
     text-align:center;
 }
 
+.onglet_eleve1{
+    background: white;
+    color: #5bc0de;
+    font-size: large;
+    border: 1px solid #46b8da;
+    text-align:center;
+    box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7),
+            -1px 2px 20px rgba(255, 255, 255, 0.6) inset; 
+    
+
+}
+
 .bouton1{
     margin-top: 10px;
-    margin-left: -4px;
+    margin-left: 10px;
 }
 
 .semestre{
@@ -231,7 +276,7 @@ nav ul li:hover
 
 .bouton2{
     margin-top: 100px;
-    margin-left: 125px;
+    margin-left: 515px;
     font-size:100px;
 }
 
@@ -242,7 +287,11 @@ nav ul li:hover
 
 .bouton_titre{
     font-size:100px;
-    margin-left: 195px;
+   margin-right: 10px;
+}
+
+.ombrage{
+    box-shadow: 1px 1px 12px black; 
 }
 p {
     font-size: 20px
