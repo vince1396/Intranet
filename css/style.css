@@ -196,6 +196,7 @@ nav ul li:hover
     color: white;
     font-size: large;
     border: 1px solid #46b8da;
+    text-align:center;
 }
 
 .onglet_eleve2{
@@ -203,17 +204,20 @@ nav ul li:hover
     color: #5bc0de;
     font-size: large;
     border: 1px solid #46b8da;
+    text-align:center;
 }
 .onglet_eleve4{
     background: white;
     color: #5bc0de;
     font-size: large;
     border-bottom: 3px solid #46b8da;
+    text-align:center;
 }
 
 .onglet_eleve3{
     font-size: large;
     color: white;
+    text-align:center;
 }
 
 .bouton1{
