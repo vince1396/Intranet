@@ -10,6 +10,8 @@ body
 .corps{
     background:url("wall2.jpeg") no-repeat fixed center center/ 100% auto; 
     height: calc(100%);
+    background-size:100% 100%;
+    width: 100%;
 }
 
 .case1
