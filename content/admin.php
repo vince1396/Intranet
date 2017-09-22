@@ -1,5 +1,5 @@
 <? require "content/header.php"; ?>
-<div class="back_admin2">
+<div class="corps">
 <div class="container">
 <div class="row">
     <div class="col-lg-12 menu_admin">
@@ -34,7 +34,9 @@
         </div>
     </div>
 <div class="row">
-    <div class="col-xs-12"><a href="index.php"><button type="button" class="btn btn-danger bouton2">Déconnexion</button></a></div>
+
+    <div class="col-xs-12 col-md-12"><a href="index.php"><button type="button" class="bouton2 btn btn-danger">Déconnexion</button></a></div>
+
 </div>
     
 </div>
