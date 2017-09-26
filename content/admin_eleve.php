@@ -1,16 +1,93 @@
 <div class="back_admin">
     <div class="container">
        <div class="row row1">
-            <div class="col-md-12 col-xs-12"><span class="btn btn-primary bouton_titre"><h4>Gestion des élèves </h4></span> <span class="btn btn-info select_class"><h5> Classe :</h5></span>
-                <select class="btn btn-info select_class">
-                    <h5><option value="1">Classe 1</option>
-                    <option value="2">Classe 2</option>
-                    <option value="3">Classe 3</option>
-                    <option value="4">Classe 4</option>
-                    <option value="5">Classe 5</option>
-                    <option value="6">Classe 6</option>
-                </h5></select>
-                <button class="btn btn-success select_class"><span class="glyphicon glyphicon-plus"></span> Ajouter un élève</button>
+            <div class="col-md-12 col-xs-12"><span class="btn btn-primary bouton_titre"><h4>Gestion des élèves </h4></span> 
+              
+               <form method="post">
+                 <div>
+                     <span class="btn btn-info select_class"><h5> Classe :</h5></span>
+                    <select class="btn btn-info select_class" name="classe">
+                       
+                        <h5><option value="1">Classe 1</option>
+                        <option value="2">Classe 2</option>
+                        <option value="3">Classe 3</option>
+                        <option value="4">Classe 4</option>
+                        <option value="5">Classe 5</option>
+                        <option value="6">Classe 6</option>
+                    </h5>
+                    </select>
+
+                    Nom élève: <input type="text" name="nom_e[]">
+                    Prénom élève: <input type="text" name="prenom_e[]">
+                    
+                    <button class="btn btn-success select_class" type="submit" name="submit"><span class="glyphicon glyphicon-plus"></span> Ajouter un élève</button>
+                 </div>
+                 
+                 
+                 <!--Formulaire caché-->
+                 
+                  <div class="hidden" id="duplicate">
+                   <span class="btn btn-info select_class"><h5> Classe :</h5></span>
+                    <select class="btn btn-info select_class" name="classe">
+                       
+                        <h5><option value="1">Classe 1</option>
+                        <option value="2">Classe 2</option>
+                        <option value="3">Classe 3</option>
+                        <option value="4">Classe 4</option>
+                        <option value="5">Classe 5</option>
+                        <option value="6">Classe 6</option>
+                    </h5>
+                    </select>
+
+                    Nom élève: <input type="text" name="nom_e[]">
+                    Prénom élève: <input type="text" name="prenom_e[]">
+                    
+                    <button class="btn btn-success select_class" type="submit" name="submit"><span class="glyphicon glyphicon-plus"></span> Ajouter un élève</button>
+                    
+                   </div>
+                   
+                   <button class="btn btn-success select_class" type="submit" name="submit" id="duplicatebtn"><span class="glyphicon glyphicon-plus"></span> Ajouter un autre élève</button>
+                </form>
+                <script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+                <script>
+                    (function ($){
+                        $('#duplicatebtn').click(function (e) {
+                            e.preventDefault();
+                            var clone = $('#duplicate').clone().attr('id','').removeClass('hidden');
+                            $('#duplicate').before(clone);
+                        })
+                    })(jQuery);
+                </script>
+                
+                <?php
+                
+                    if(isset($_POST["submit"])){
+                        
+                        extract($_POST);
+                       
+                        
+                        foreach($nom_e as $k => $v)
+                        {
+                            if($v != "")
+                            {
+                            $req = $bdd->prepare("INSERT INTO eleve(nom_e, prenom_e, id_c) VALUES(?, ?, ?)");
+                            $req->execute(array($nom_e[$k], $prenom_e[$k], $classe));
+                            }
+                        }
+                        
+                        echo '<div class="row ombrage">';
+                        echo '<div class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3></h3></div>';
+                        echo '<div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3></h3></div>';
+                        echo '<div class="col-xs-12 col-md-4 onglet_eleve4 text-center"><h3></h3></div>';
+                        echo '</div>';
+                    }
+                
+                
+                ?>
+                
             </div>
         </div>
         <br>

@@ -1,3 +1,17 @@
+<?php
+session_start();
+	try
+	{
+		$bdd = new PDO("mysql:host=localhost;
+		               dbname=intranet;charset=utf8","root","");
+	}
+	catch(Exception $e)
+	{
+		die("erreur de connexion");
+	} 
+?>
+
+
 <html>
 <head>
 	<title>Intranet</title>
