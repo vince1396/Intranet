@@ -359,9 +359,9 @@
 ?>
 
 <!-- ====================================================================================================================================================== -->
-                                                        <!-- AJOUT USER MANUELLEMENT -->
+                                                        <!-- AJOUT ELEVE MANUELLEMENT -->
 <?php
-  function addUser($email, $nom, $prenom, $table, $bdd)
+  function addEleve($email, $nom, $prenom, $classe, $bdd)
   {
     if(empty($email) OR empty($mdp) OR empty($prneom))
     {
@@ -387,7 +387,54 @@
         $crypt = sha1($mdp);
         $ip = $_SERVER['REMOTE_ADDR'];
 
-        $req = $bdd->prepare("INSERT INTO :table VALUES (NULL, :email, :mdp, :nom, :prenom, :ip, NULL)");
+        $req = $bdd->prepare("INSERT INTO eleve VALUES (NULL, :email, :mdp, :nom, :prenom, :ip, NULL, :classe)");
+        $req->bindValue('email', $email, PDO::PARAM_STR);
+        $req->bindValue('mdp', $mdp, PDO::PARAM_STR);
+        $req->bindValue('nom', $nom, PDO::PARAM_STR);
+        $req->bindValue('prenom', $prenom, PDO::PARAM_STR);
+        $req->bindValue('ip', $ip, PDO::PARAM_STR);
+        $req->bindValue('classe', $classe, PDO::PARAM_INT);
+        $req->execute();
+
+        sendMail($email, $mdp);
+
+        $message = "Elève ajouté";
+        return $message;
+      }
+    }
+  }
+?>
+
+<!-- ====================================================================================================================================================== -->
+                                                        <!-- AJOUT PROF MANUELLEMENT -->
+<?php
+  function addProf($email, $nom, $prenom, $matiere, $bdd)
+  {
+    if(empty($email) OR empty($mdp) OR empty($prenom))
+    {
+      $error = "Veuillez remplir tous les champs du formulaire";
+      return $error;
+    }
+    else
+    {
+      $req = $bdd->prepare("SELECT * FROM eleve, prof WHERE email = :email");
+      $req->bindValue('email', $email, PDO::PARAM_STR);
+      $req->execute();
+
+      $rep = $req->fetch();
+
+      if($rep)
+      {
+        $error = "Email déja utilisé";
+        return $error;
+      }
+      else
+      {
+        $mdp = randomMdp();
+        $crypt = sha1($mdp);
+        $ip = $_SERVER['REMOTE_ADDR'];
+
+        $req = $bdd->prepare("INSERT INTO prof VALUES (NULL, :email, :mdp, :nom, :prenom, :ip, NULL)");
         $req->bindValue('email', $email, PDO::PARAM_STR);
         $req->bindValue('mdp', $mdp, PDO::PARAM_STR);
         $req->bindValue('nom', $nom, PDO::PARAM_STR);
@@ -396,6 +443,16 @@
         $req->execute();
 
         sendMail($email, $mdp);
+        $id_p = $bdd->lastInsertId;
+
+        foreach ($matiere as $key => $value)
+        {
+          $req1 = $bdd->prepare("INSERT INTO enseigner (id_p, id_m) VALUES (?, ?)");
+          $req1->execute([$id_p, $value]);
+        }
+
+        $message = "Professeur ajouté";
+        return $message;
       }
     }
   }
@@ -409,7 +466,7 @@
     $mdp = "";
     $chaine = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-    for($i = 0; i < 8; i++)
+    for($i = 0; $i < 8; $i++)
     {
       $mdp .= $chaine[rand(0,51)];
     }
@@ -421,7 +478,7 @@
 ?>
 
 <!-- ====================================================================================================================================================== -->
-                                                             <!-- RANDOM PASSWORD -->
+                                                             <!-- ENVOYER MAIL -->
 <?php
   function sendMail($mail, $mdp)
   {
@@ -471,17 +528,77 @@
   }
 ?>
 
+<!-- ====================================================================================================================================================== -->
+                                                             <!-- CREER CLASSE -->
+<?php
+  function creerClasse ($nom, $bdd)
+  {
+    if(empty($nom))
+    {
+      $error = "Veuillez donner un nom à la classe à créer";
+      return $error;
+    }
+    else
+    {
+      $req = $bdd->prepare("INSERT INTO classes (id_c, nom_c) VALUES (NULL, :nom)");
+      $req->bindValue('nom', $nom, PDO::PARAM_STR);
+      $req->execute();
 
+      $message = "La clase a bien été créée";
+      return $message;
+    }
+  }
+?>
 
+<!-- ====================================================================================================================================================== -->
+                                                             <!-- AFFICHAGE -->
+<?php
+  function displayEleve()
+  {
+    $req = $bdd->prepare("SELECT * FROM eleve");
+    $req->execute();
 
+    $rep = $req->fetch();
 
+    return $rep;
+  }
+?>
+<!-- ================================= -->
+<?php
+  function displayProf()
+  {
+    $req = $bdd->prepare("SELECT * FROM prof WHERE lvl = 1");
+    $req->execute();
 
+    $rep = $req->fetch();
 
+    return $rep;
+  }
+?>
+<!-- ================================= -->
+<?php
+  function displayClasse()
+  {
+    $req = $bdd->prepare("SELECT * FROM classes");
+    $req->execute();
 
+    $rep = $req->fetch();
 
+    return $rep;
+  }
+?>
+<!-- ================================= -->
+<?php
+  function displayMatiere()
+  {
+    $req = $bdd->prepare("SELECT * FROM matiere");
+    $req->execute();
 
+    $rep = $req->fetch();
 
-
+    return $rep;
+  }
+?>
 
 
 
