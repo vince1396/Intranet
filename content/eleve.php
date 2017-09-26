@@ -82,7 +82,6 @@
               <div class="col-xs-12 col-md-4 onglet_eleve2"><h3>Matière</h3></div>
               <div class="col-xs-12 col-md-4 onglet_eleve1"><h3>Notes</h3></div>
               <div class="col-xs-12 col-md-4 onglet_eleve4"><h3>Appréciations</h3></div>
-
         </div>
         
 
@@ -93,9 +92,7 @@
         <br>
          <div class="row">
             <div class="col-xs-12">
-
                 <a href="index.php"><button class="btn btn-primary bouton1"><span class="glyphicon glyphicon-home"></span> <h4>Revenir à l'accueil</h4></button></a>
-
             </div>
             
         

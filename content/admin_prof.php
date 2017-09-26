@@ -4,14 +4,11 @@
         
         <div class="row row1">
             <div class="col-xs-12">
+
                <span class="btn btn-primary bouton_titre bouton1">Gestion des professeurs</span>
                 <span  class="btn btn-info semestre bouton1">Semestre 1 </span>
                 <span  class="btn btn-info semestre bouton1"> Semestre 2</span>
-            </div> 
-            
-
-            
-          
+            </div>   
         </div>
         <br>
         <div class="row">

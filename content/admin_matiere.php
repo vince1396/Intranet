@@ -1,6 +1,6 @@
 <div class="back_admin">
         <div class="container">
-        
+          
            <div class="row row1 bouton_titre">
             <div class="col-xs-12">
                <span class="btn btn-primary bouton_titre"><h5>Gestion des matières</h5></span>
@@ -72,12 +72,6 @@
         
 
         <br>
-         <div class="row">
-            <div class="col-xs-12">
-               
-            </div>
-            
-        </div>
         
         
     </div>
