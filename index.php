@@ -1,5 +1,10 @@
 <?php
     
+define('WEBROOT', dirname(__FILE__));
+define('BASE_URL', dirname($_SERVER['SCRIPT_NAME']));
+define('ROOT', dirname(WEBROOT));
+define('DS', DIRECTORY_SEPARATOR);
+define('CORE',ROOT.DS.'core');
     
     if(!isset($_GET['p']) || $_GET['p'] == "")
     {
@@ -21,6 +26,5 @@
 	
 	ob_end_clean();
 	require "layout.php";
-  
     
 ?>

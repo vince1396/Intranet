@@ -15,7 +15,7 @@
                             <input type="email" class="form-control connexion" id="inputEmail3" placeholder="Mot de passe">
                         </div>
                         <div class="col-sm-8">
-                        <a href="index.php?p=admin"><button type="button" class="btn btn-info bouton_submit">Se connecter</button></a>
+                        <a href="<?=BASE_URL;?>/admin"><button type="button" class="btn btn-info bouton_submit">Se connecter</button></a>
                         </div>
                     </div>
                 </form>
@@ -32,7 +32,7 @@
                             <input type="email" class="form-control connexion" id="inputEmail3" placeholder="Mot de passe">
                         </div>
                          <div class="col-sm-8">
-                             <a href="index.php?p=professeur"><button type="button" class="btn btn-info bouton_submit">Se connecter</button></a>
+                             <a href="<?=BASE_URL;?>/professeur"><button type="button" class="btn btn-info bouton_submit">Se connecter</button></a>
                         </div>
                     </div>
                 </form>
@@ -50,7 +50,7 @@
                             <input type="email" class="form-control connexion" id="inputEmail3" placeholder="Mot de passe">
                         </div>
                          <div class="col-sm-8">
-                        <a href="index.php?p=eleve"><button type="button" class="btn btn-info bouton_submit">Se connecter</button></a>
+                        <a href="<?=BASE_URL;?>/eleve"><button type="button" class="btn btn-info bouton_submit">Se connecter</button></a>
                         </div>
                     </div>
                 </form>
