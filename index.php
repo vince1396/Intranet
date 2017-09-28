@@ -1,5 +1,5 @@
 <?php
-    require "content/header.php";
+    
     
     if(!isset($_GET['p']) || $_GET['p'] == "")
     {
@@ -22,5 +22,5 @@
 	ob_end_clean();
 	require "layout.php";
   
-    require "content/footer.php";
+    
 ?>

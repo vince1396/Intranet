@@ -103,13 +103,7 @@
                     $req = $bdd->prepare("INSERT INTO enseigner (id_p, id_m) VALUES (?, ?)");
                     $req->execute([$id_p, $v]);
                 }
-                
-                $requete = $bdd->query("SELECT * FROM professeur p, matiere m, classes c, enseigner e WHERE
-                                            e.id_p = p.id_p AND
-                                            e.id_m = m.id_m AND
-                                            p.id_c = c.id_c");
-                    
-                    
+    
                
                 while($reponse = $requete->fetch())
                 {
@@ -158,7 +152,7 @@
             </div>
         
     </div>
-    
+
              <div class="row">
             <div class="col-xs-12">
                 <a href="index.php?p=admin"><button class="btn btn-primary bouton1"><span class="glyphicon glyphicon-home"></span><h4>Revenir à l'accueil</h4></button></a>

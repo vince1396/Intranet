@@ -5,7 +5,6 @@
               
                <form method="post">
                  <div>
-                     <span class="btn btn-info select_class"><h5> Classe :</h5></span>
                     <select class="btn btn-info select_class" name="classe">
                        
                         <h5><option value="1">Classe 1</option>
@@ -27,7 +26,6 @@
                  <!--Formulaire caché-->
                  
                   <div class="hidden" id="duplicate">
-                   <span class="btn btn-info select_class"><h5> Classe :</h5></span>
                     <select class="btn btn-info select_class" name="classe">
                        
                         <h5><option value="1">Classe 1</option>
