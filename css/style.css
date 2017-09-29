@@ -261,8 +261,10 @@ nav ul li:hover
     text-align:center;
     box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7),
             -1px 2px 20px rgba(255, 255, 255, 0.6) inset; 
-    
+}
 
+.font_color{
+    color: black;
 }
 
 .bouton1{

@@ -128,15 +128,15 @@
             <div class="col-xs-12 bouton1">
                <button class="btn btn-info"><span class="glyphicon glyphicon-plus"></span><h4>Modifier Classe</h4></button>
                <form method="post">
-                   <label type="text">Prénom: <input type="text" name="prenom_p"></label>
-                   <label type="text">Nom: <input type="text" name="nom_p"></label>
-                   <label class="btn btn-success">Classe: 
+                   <label type="text" class="btn btn-success ">Prénom: <input type="text" name="prenom_p" class="font_color"></label>
+                   <label type="text" class="btn btn-success ">Nom: <input type="text" name="nom_p" class="font_color"></label>
+                   <label class="btn btn-success"><u><b>Classe:</b></u>
                            Classe 1<input type="checkbox" name="classe[]">
                            Classe 2<input type="checkbox" name="classe[]">
                            Classe 3<input type="checkbox" name="classe[]">    
                    </label>
-                   <label type="text">Salaire: <input type="text" name="salaire"></label>
-                   <label class="btn btn-success"> Matière:
+                  
+                   <label class="btn btn-success"> <u><b>Matière:</b></u>
                             Math<input type="checkbox" name="matiere[]" value="1">      
                             EDM<input type="checkbox" name="matiere[]" value="4"> 
                             PPE<input type="checkbox" name="matiere[]" value="3"> 
