@@ -155,7 +155,7 @@
 
              <div class="row">
             <div class="col-xs-12">
-                <a href="index.php?p=admin"><button class="btn btn-primary bouton1"><span class="glyphicon glyphicon-home"></span><h4>Revenir à l'accueil</h4></button></a>
+                <a href="<?=BASE_URL;?>/admin"><button class="btn btn-primary bouton1"><span class="glyphicon glyphicon-home"></span><h4>Revenir à l'accueil</h4></button></a>
             </div>
 
 </div>

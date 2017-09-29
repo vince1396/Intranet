@@ -6,7 +6,7 @@
                <span class="btn btn-primary bouton_titre"><h5>Gestion des matières</h5></span>
                 <span  class="btn btn-info semestre"><h5>Semestre 1 </h5></span>
                 <span  class="btn btn-info semestre"> <h5>Semestre 2</h5></span>
-                <a href="index.php"><button class="btn btn-primary bouton_titre text-center"><span class="glyphicon glyphicon-home"></span> <h5>Revenir à l'accueil </h5></button></a>
+                <a href="<?=BASE_URL;?>/admin"><button class="btn btn-primary bouton_titre text-center"><span class="glyphicon glyphicon-home"></span> <h5>Revenir à l'accueil </h5></button></a>
             </div> 
            
             
