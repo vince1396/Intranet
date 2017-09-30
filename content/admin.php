@@ -5,7 +5,7 @@
     <div class="col-lg-12 menu_admin">
        
       
-                <a href="index.php?p=admin_eleve"><div class="col-md-4 col-xs-12 selection_admin">
+                <a href="<?=BASE_URL;?>/admin_eleve"><div class="col-md-4 col-xs-12 selection_admin">
                 <div class="case2">
                    <p class="titre_admin">
                    <span class="glyphicon glyphicon-star-empty etoile"></span><br>
@@ -15,7 +15,7 @@
                     </div></a>
        
 
-                <a href="index.php?p=admin_prof"><div class="col-md-4 col-xs-12 selection_admin">
+                <a href="<?=BASE_URL;?>/admin_prof"><div class="col-md-4 col-xs-12 selection_admin">
                     <div class="case2">
                        <p class="titre_admin">
                        <span class="glyphicon glyphicon-star etoile"></span><br>
@@ -23,7 +23,7 @@
                         </p>
                     </div>
                     </div></a>
-                <a href="index.php?p=admin_matiere"><div class="col-md-4 col-xs-12 selection_admin">
+                <a href="<?=BASE_URL;?>/admin_matiere"><div class="col-md-4 col-xs-12 selection_admin">
                     <div class="case2">
                        <p class="titre_admin">
                        <span class="glyphicon glyphicon-th-list etoile"></span><br>
