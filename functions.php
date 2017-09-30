@@ -163,7 +163,7 @@
         'login'=>$login,
         'mdp'=>sha1($mdp)
         ));
-      $resultat=$req->fetch();
+      $resultat = $req->fetch();
 
       if (!$resultat)
       {
@@ -188,7 +188,7 @@
 <!-- ====================================================================================================================================================== -->
                                                             <!-- CONNEXION MUTLTIPLE -->
 <?php
-  function mutipleLogin($email, $mdp, $table, $admin, $bdd)
+  function multipleLogin($email, $mdp, $table, $admin, $bdd)
   {
     if(empty($login) OR empty($mdp))
     {
@@ -599,9 +599,6 @@
     return $rep;
   }
 ?>
-
-
-
 
 
 
