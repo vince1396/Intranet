@@ -199,7 +199,7 @@
         <div class="row">
 
             <div class="col-xs-12 col-md-4">
-                <a href="index.php?p=admin">
+                <a href="<?=BASE_URL;?>/admin">
                     <button class="btn btn-primary bouton1"><span class="glyphicon glyphicon-home"></span><h5>Revenir à l'accueil</h5></button>
                 </a>
             </div>
