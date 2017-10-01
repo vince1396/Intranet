@@ -23,7 +23,7 @@
             $page = $_GET['p'];
           }
       }
-      
+
     require "lib/bdd.php";
     require "lib/functions.php";
 
