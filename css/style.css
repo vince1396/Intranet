@@ -277,8 +277,7 @@ nav ul li:hover
 }
 
 .bouton2{
-    margin-top: 100px;
-    margin-left: 515px;
+    margin-top: 50px;
     font-size:100px;
 }
 
@@ -1102,5 +1101,13 @@ fieldset[disabled] .btn-success:hover {
 .lolo{
     text-align: right;
     margin-right: 840px;
+    font-size: 20px;
+}
+
+.padd_bottom{
+    padding-bottom: 50px;
+}
+
+.text-size{
     font-size: 20px;
 }
