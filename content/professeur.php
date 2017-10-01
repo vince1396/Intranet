@@ -123,6 +123,71 @@
             
                  <div class="col-xs-12 col-md-4 bouton1"><button class="btn btn-info"><h5><span class="glyphicon glyphicon-pencil"></span> Modifier les élèves</h5></button></div><div class="col-xs-12 col-md-4 bouton1"><button class="btn btn-info"><h5><span class="glyphicon glyphicon-pencil"></span> Modifier les notes</h5></button></div>
 
-        </div>    
+        </div>  
+        
+          
+         <?php
+    if(isset($_POST['submit']))
+    {
+        extract($_POST);
+        
+        $requete = $bdd->prepare("SELECT id_e FROM eleve WHERE id_e = :dest");
+        $requete->bindValue(':dest',$destinataire,PDO::PARAM_STR);
+        $requete->execute();
+        if($reponse = $requete->fetch())
+        {
+            $requete = $bdd->prepare("INSERT INTO message(titre,contenu,id_dest,id_exp)
+            VALUES(:titre,:contenu,:dest,:exp)");
+            $requete->bindValue(':titre',$titre,PDO::PARAM_STR);
+            $requete->bindValue(':contenu',$contenu,PDO::PARAM_STR);
+            $requete->bindValue(':dest',$reponse['id_e'],PDO::PARAM_INT);
+            $requete->bindValue(':exp',$_SESSION['id'],PDO::PARAM_INT);
+            $requete->execute();
+            
+            echo"<center><h4>message envoyé</h4></center>";
+        }
+        else
+        {
+            echo"<center><h4>Destinataire inconnu</h4></center>";
+        }
+    }
+
+?>
+   
+    <div class="row">
+
+    <header>
+        <h2>Envoyer un message</h2>
+    </header>
+    
+    <form method="post" action="#">
+       
+       <div class="form-group">
+           <label for="exampleInputEmail1" class="text-size">Destinataire</label>
+            <select class="form-control" name="destinataire">
+                <?php
+                
+                    $req = $bdd->query("SELECT * FROM eleve");
+                    $i = 1;
+                 
+                    while($reponse = $req->fetch())
+                    {
+                            echo "<option value='".$i."'>".$reponse['nom']." ".$reponse['prenom']."</option>";
+                            $i++;
+                    
+                    }   
+                ?>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="text-size">Titre du message</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Titre" name="titre"> </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1" class="text-size">Contenu du message</label>
+            <textarea type="password" class="form-control" id="exampleInputPassword1" name="contenu" rows="5"></textarea>
+        </div>
+        <button type="submit" class="btn btn-default" name="submit">Envoyer</button>
+    </form>
+  </div>
     </div>
 </div>
