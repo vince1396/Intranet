@@ -21,15 +21,15 @@ if(isset($_SESSION['lvl']))
 {
     if($_SESSION['lvl'] == 0)
     {
-      header("Location:index.php?p=eleve");
+      header("Location:".BASE_URL."/eleve");
     }
     elseif($_SESSION['lvl'] == 1)
     {
-      header("Location:index.php?p=professeur");
+      header("Location:".BASE_URL."/professeur");
     }
     elseif($_SESSION['lvl'] == 2)
     {
-      header("Location:index.php?p=admin");
+      header("Location:".BASE_URL."/admin");
     }
     else
     {
