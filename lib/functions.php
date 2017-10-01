@@ -609,7 +609,7 @@
 <?php
 function displayMatiere($id_c, $bdd)
 {
-  $req = $bdd->prepare("SELECT DISTINCT nom_m, id_m FROM matiere m, suivre s, classes c where m.id_m = s.id_m AND s.id_c = :id_c");
+  $req = $bdd->prepare("SELECT DISTINCT nom_m, m.id_m FROM matiere m, suivre s, classes c where m.id_m = s.id_m AND s.id_c = :id_c");
   $req->bindValue('id_c', $id_c, PDO::PARAM_INT);
   $req->execute();
 

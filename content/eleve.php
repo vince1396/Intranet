@@ -24,13 +24,29 @@
         </div>
 
         <?php
-          $req = displayMatiere($_SESSION['classe'], $bdd);
-          while($rep = $req->fetch())
+          $req1 = displayMatiere($_SESSION['classe'], $bdd);
+          while($rep1 = $req1->fetch())
           { ?>
           <div class="row">
-              <div class="col-xs-12 col-md-4 onglet_eleve2"><h3><?php echo $rep['nom_m']; ?></h3></div>
-              <div class="col-xs-12 col-md-4 onglet_eleve1"><h3>18 / 19 / 20</h3></div>
-              <div class="col-xs-12 col-md-4 onglet_eleve4"><h3>Bien joué !</h3></div>
+              <div class="col-xs-12 col-md-4 onglet_eleve2"><h3><?php echo $rep1['nom_m']; ?></h3></div>
+              <div class="col-xs-12 col-md-4 onglet_eleve1"><h3>
+              <?php
+                $req2 = displayNote($rep1['id_m'], $bdd);
+                while($rep2 = $req2->fetch())
+                {
+                  echo " ".$rep2['note']." / ";
+                }
+              ?>
+              </h3></div>
+              <div class="col-xs-12 col-md-4 onglet_eleve4">
+                <?php
+                  $req3 = displayAppreciation($rep1['id_m'], $_SESSION['id'], $bdd);
+                  while($rep3 = $req3->fetch())
+                  {
+                    echo $rep3['appreciation'];
+                  }
+                ?>
+              </div>
           </div>
         <?php } ?>
         <br />
@@ -39,8 +55,6 @@
             <div class="col-xs-12">
                 <a href="index.php"><button class="btn btn-primary bouton1"><span class="glyphicon glyphicon-home"></span> <h4>Revenir à l'accueil</h4></button></a>
             </div>
-
-
-
-    </div>
+        </div>
+</div>
 </div>
