@@ -5,7 +5,7 @@
               
                <form method="post">
                  <div>
-                    <select class="btn btn-info select_class" name="classe">
+                    <select class="btn btn-info select_class" name="classe[]">
                        
                         <h5><option value="1">Classe 1</option>
                         <option value="2">Classe 2</option>
@@ -26,7 +26,7 @@
                  <!--Formulaire caché-->
                  
                   <div class="hidden" id="duplicate">
-                    <select class="btn btn-info select_class" name="classe">
+                    <select class="btn btn-info select_class" name="classe[]">
                        
                         <h5><option value="1">Classe 1</option>
                         <option value="2">Classe 2</option>
@@ -72,7 +72,7 @@
                             if($v != "")
                             {
                             $req = $bdd->prepare("INSERT INTO eleve(nom_e, prenom_e, id_c) VALUES(?, ?, ?)");
-                            $req->execute(array($nom_e[$k], $prenom_e[$k], $classe));
+                            $req->execute(array($nom_e[$k], $prenom_e[$k], $classe[$k]));
                             }
                         }
                         
