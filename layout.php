@@ -4,5 +4,4 @@
 		echo $content;
 
     require "content/footer.php";
-
 ?>

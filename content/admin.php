@@ -3,8 +3,8 @@
 <div class="container">
 <div class="row">
     <div class="col-lg-12 menu_admin">
-       
-      
+
+
                 <a href="<?=BASE_URL;?>/admin_eleve"><div class="col-md-4 col-xs-12 selection_admin">
                 <div class="case2">
                    <p class="titre_admin">
@@ -13,7 +13,7 @@
                     </p>
                 </div>
                     </div></a>
-       
+
 
                 <a href="<?=BASE_URL;?>/admin_prof"><div class="col-md-4 col-xs-12 selection_admin">
                     <div class="case2">
@@ -33,11 +33,5 @@
                     </div></a>
         </div>
     </div>
-<div class="row">
-
-    <div class="col-xs-12 col-md-12"><a href="index.php"><button type="button" class="bouton2 btn btn-danger">Déconnexion</button></a></div>
-
-</div>
-    
 </div>
 </div>

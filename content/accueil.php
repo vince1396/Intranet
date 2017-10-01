@@ -2,20 +2,42 @@
   if(isset($_POST['admin']))
   {
     extract($_POST);
-    multipleLogin($email, $mdp, "prof", 2, $bdd);
+    echo multipleLogin($email, $mdp, 2, $bdd);
   }
   elseif (isset($_POST['prof']))
   {
     extract($_POST);
-    multipleLogin($email, $mdp, "prof", 1, $bdd);
+    echo multipleLogin($email, $mdp, 1, $bdd);
   }
   elseif (isset($_POST['eleve']))
   {
     extract($_POST);
-    multipleLogin($email, $mdp, "eleve", 0, $bdd);
+    echo multipleLogin($email, $mdp, 0, $bdd);
   }
 ?>
 
+<?php
+if(isset($_SESSION['lvl']))
+{
+    if($_SESSION['lvl'] == 0)
+    {
+      header("Location:index.php?p=eleve");
+    }
+    elseif($_SESSION['lvl'] == 1)
+    {
+      header("Location:index.php?p=professeur");
+    }
+    elseif($_SESSION['lvl'] == 2)
+    {
+      header("Location:index.php?p=admin");
+    }
+    else
+    {
+      echo "Error lvl";
+    }
+}
+else
+{ ?>
 <div class="corps">
   <div class="container">
     <div class="row">
@@ -48,7 +70,7 @@
                           <input type="email" name="email" class="form-control connexion" id="inputEmail3" placeholder="Email">
                         </div>
                         <div class="col-sm-8">
-                          <input type="mdp" name="mdp" class="form-control connexion" id="inputEmail3" placeholder="Mot de passe">
+                          <input type="password" name="mdp" class="form-control connexion" id="inputEmail3" placeholder="Mot de passe">
                         </div>
                          <div class="col-sm-8">
                           <button type="submit" name ="prof" class="btn btn-info bouton_submit">Se connecter</button>
@@ -80,3 +102,4 @@
     </div>
   </div>
 </div>
+<?php } ?>

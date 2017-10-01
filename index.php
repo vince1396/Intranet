@@ -1,4 +1,6 @@
 <?php
+     session_start();
+     print_r($_SESSION);
 
     define('WEBROOT', dirname(__FILE__));
     define('BASE_URL', dirname($_SERVER['SCRIPT_NAME']));
@@ -6,8 +8,6 @@
     define('DS', DIRECTORY_SEPARATOR);
     define('CORE',ROOT.DS.'core');
 
-    if(!isset($_SESSION))
-    {
       if(!isset($_GET['p']) || $_GET['p'] == "")
       {
           $page = 'accueil';
@@ -23,25 +23,11 @@
             $page = $_GET['p'];
           }
       }
-    }
-    else
-    {
-      if($_SESSION['lvl'] == 0)
-      {
-        $page = 'eleve';
-      }
-      elseif($_SESSION['lvl'] == 1)
-      {
-        $page = 'prof';
-      }
-      else
-      {
-        $page = 'admin';
-      }
-    }
+      
+    require "lib/bdd.php";
+    require "lib/functions.php";
 
     ob_start();//permet de ne plus renvoyer de contenu au navigateur
-      require "functions.php";
       require "content/".$page.".php";
       $content = ob_get_contents();//permet de recuperer le contenu executer depuis ob_start
   	ob_end_clean();
