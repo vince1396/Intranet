@@ -2,11 +2,11 @@
   if(isset($_POST['admin']))
   {
     extract($_POST);
-?> 
+?>
   <center><div class="col-xs-12 col-md-12 alert alert-danger">
     <h3 class="alert-link"><?php echo multipleLogin($email, $mdp, 2, $bdd);?> </h3>
   </div></center>
-   
+
 <?php
   }
   elseif (isset($_POST['prof']))
@@ -16,7 +16,7 @@
   <center><div class="col-xs-12 col-md-12 alert alert-danger">
      <h3 class="alert-link"><?php echo multipleLogin($email, $mdp, 1, $bdd); ?> </h3>
   </div></center>
-  
+
   <?php
   }
   elseif (isset($_POST['eleve']))
@@ -26,7 +26,7 @@
   <center><div class="col-xs-12 col-md-12 alert alert-danger">
       <h3 class="alert-link"><?php echo multipleLogin($email, $mdp, 0, $bdd); ?> </h3>
   </div></center>
-<?php 
+<?php
   }
 ?>
 
@@ -39,7 +39,7 @@ if(isset($_SESSION['lvl']))
     }
     elseif($_SESSION['lvl'] == 1)
     {
-      header("Location:".BASE_URL."/professeur");
+      header("Location:index.php?p=professeur");
     }
     elseif($_SESSION['lvl'] == 2)
     {
