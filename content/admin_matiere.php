@@ -13,51 +13,49 @@
           
         </div>
         <br>
-        <div class="row">
-            <div class="col-xs-12 col-md-4 onglet_eleve"><h3>Matière</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve"><h3>Classes</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve"><h3>Enseignants</h3></div>
-        </div>
-          <div class="row">
-              <div class="col-xs-12 col-md-4 onglet_eleve2"><h3>Français</h3></div>
-              <div class="col-xs-12 col-md-4 onglet_eleve1"><h3>Classe 1, Classe 2</h3></div>
-              <div class="col-xs-12 col-md-4 onglet_eleve1"><h3>Monsieur Machin</h3></div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-md-4 onglet_eleve2"><h3>Mathématiques</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1"><h3>Classe 1, Classe 2</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1"><h3>Monsieur Machin</h3></div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-md-4 onglet_eleve2"><h3>Economie</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1"><h3>Classe 1, Classe 2</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1"><h3>Monsieur Machin</h3></div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-md-4 onglet_eleve2"><h3>Anglais</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1"><h3>Classe 1, Classe 2</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1"><h3>Monsieur Machin</h3></div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-md-4 onglet_eleve2"><h3>Physique - Chimie</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1"><h3>Classe 1, Classe 2</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1"><h3>Monsieur Machin</h3></div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-md-4 onglet_eleve2"><h3>SVT</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1"><h3>Classe 1, Classe 2</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1"><h3>Monsieur Machin</h3></div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-md-4 onglet_eleve2"><h3>Espagnol</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1"><h3>Classe 1, Classe 2</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1"><h3>Monsieur Machin</h3></div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-md-4 onglet_eleve2"><h3>EPS</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1"><h3>Classe 1, Classe 2</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1"><h3>Monsieur Machin</h3></div>
-        </div>
+        <table>
+        <tr class="row">
+            <td class="col-xs-12 col-md-4 onglet_eleve"><h3>Matière</h3></td>
+            <td class="col-xs-12 col-md-4 onglet_eleve"><h3>Classes</h3></td>
+            <td class="col-xs-12 col-md-4 onglet_eleve"><h3>Enseignants</h3></td>
+        </tr>
+        
+          <tr class="row">
+              <td class="col-xs-12 col-md-4 onglet_eleve2"><h3>Français</h3></td>
+              <td class="col-xs-12 col-md-4 onglet_eleve1"><h3>Classe 1, Classe 2</h3></td>
+              <td class="col-xs-12 col-md-4 onglet_eleve1"><h3>Monsieur Machin</h3></td>
+        </tr>
+        <tr class="row">
+              <td class="col-xs-12 col-md-4 onglet_eleve2"><h3>Maths</h3></td>
+              <td class="col-xs-12 col-md-4 onglet_eleve1"><h3>Classe 1, Classe 2</h3></td>
+              <td class="col-xs-12 col-md-4 onglet_eleve1"><h3>Monsieur Machin</h3></td>
+        </tr>
+        <tr class="row">
+              <td class="col-xs-12 col-md-4 onglet_eleve2"><h3>EDM</h3></td>
+              <td class="col-xs-12 col-md-4 onglet_eleve1"><h3>Classe 1, Classe 2</h3></td>
+              <td class="col-xs-12 col-md-4 onglet_eleve1"><h3>Monsieur Machin</h3></td>
+        </tr>
+            <tr class="row">
+              <td class="col-xs-12 col-md-4 onglet_eleve2"><h3>Anglais</h3></td>
+              <td class="col-xs-12 col-md-4 onglet_eleve1"><h3>Classe 1, Classe 2</h3></td>
+              <td class="col-xs-12 col-md-4 onglet_eleve1"><h3>Monsieur Machin</h3></td>
+        </tr>
+        <tr class="row">
+              <td class="col-xs-12 col-md-4 onglet_eleve2"><h3>Histoire</h3></td>
+              <td class="col-xs-12 col-md-4 onglet_eleve1"><h3>Classe 1, Classe 2</h3></td>
+              <td class="col-xs-12 col-md-4 onglet_eleve1"><h3>Monsieur Machin</h3></td>
+        </tr>
+        <tr class="row">
+              <td class="col-xs-12 col-md-4 onglet_eleve2"><h3>Geographie</h3></td>
+              <td class="col-xs-12 col-md-4 onglet_eleve1"><h3>Classe 1, Classe 2</h3></td>
+              <td class="col-xs-12 col-md-4 onglet_eleve1"><h3>Monsieur Machin</h3></td>
+        </tr>
+        <tr class="row">
+              <td class="col-xs-12 col-md-4 onglet_eleve2"><h3>PPE</h3></td>
+              <td class="col-xs-12 col-md-4 onglet_eleve1"><h3>Classe 1, Classe 2</h3></td>
+              <td class="col-xs-12 col-md-4 onglet_eleve1"><h3>Monsieur Machin</h3></td>
+        </tr>
+        </table>
         
         
          <div class="row">

@@ -11,64 +11,48 @@
             </div>   
         </div>
         <br>
-        <div class="row">
-            <div class="col-xs-12 col-md-4 onglet_eleve"><h3>Professeurs</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve" text-center><h3>Matières</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve" text-center><h3>Classes</h3></div>
-        </div>
-          <div class="row">
-              <div class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Monsieur Jean-Mi</h3></div>
-              <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Maths</h3></div>
-              <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Classe 1</h3></div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Monsieur Jean-Mi</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Maths</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Classe 1</h3></div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Monsieur Jean-Mi</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Maths</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Classe 1</h3></div>
-        </div>
-            <div class="row">
-                <div class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Monsieur Jean-Mi</h3></div>
-                <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Maths</h3></div>
-                <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Classe 1</h3></div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Monsieur Jean-Mi</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Maths</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Classe 1</h3></div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Monsieur Jean-Mi</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Maths</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Classe 1</h3></div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Monsieur Jean-Mi</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Maths</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Classe 1</h3></div>
-        </div>
-        
-        <div class="row">
-            <div class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Monsieur Jean-Mi</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Maths</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Classe 1</h3></div>
-        </div>
-        
-        <div class="row">
-            <div class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Monsieur Jean-Mi</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Maths</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Classe 1</h3></div>
-        </div>
-        
-        <div class="row">
-            <div class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Monsieur Jean-Mi</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Maths</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Classe 1</h3></div>
-        </div>
+         <table>
+        <tr class="row">
+            <td class="col-xs-12 col-md-4 onglet_eleve"><h3>Professeurs</h3></td>
+            <td class="col-xs-12 col-md-4 onglet_eleve" text-center><h3>Matières</h3></td>
+            <td class="col-xs-12 col-md-4 onglet_eleve" text-center><h3>Classes</h3></td>
+        </tr>
+        <tr class="row">
+              <td class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Monsieur Jean-Mi</h3></td>
+              <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Maths</h3></td>
+              <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Classe 1</h3></td>
+        </tr>
+        <tr class="row">
+              <td class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Monsieur Jean-Mi</h3></td>
+              <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Maths</h3></td>
+              <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Classe 1</h3></td>
+        </tr>
+        <tr class="row">
+              <td class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Monsieur Jean-Mi</h3></td>
+              <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Maths</h3></td>
+              <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Classe 1</h3></td>
+        </tr>
+        <tr class="row">
+              <td class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Monsieur Jean-Mi</h3></td>
+              <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Maths</h3></td>
+              <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Classe 1</h3></td>
+        </tr>
+        <tr class="row">
+              <td class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Monsieur Jean-Mi</h3></td>
+              <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Maths</h3></td>
+              <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Classe 1</h3></td>
+        </tr>
+        <tr class="row">
+              <td class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Monsieur Jean-Mi</h3></td>
+              <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Maths</h3></td>
+              <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Classe 1</h3></td>
+        </tr>
+        <tr class="row">
+              <td class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Monsieur Jean-Mi</h3></td>
+              <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Maths</h3></td>
+              <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Classe 1</h3></td>
+        </tr>
+        </table>
         
         <?php
           

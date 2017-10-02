@@ -88,8 +88,9 @@
             </div>
         </div>
         <br>
-        <div class="row ombrage">
-            <div class="col-xs-12 btn btn-primary text-center"><h3>Elèves :
+        <table>
+        <tr class="row ombrage">
+            <td class="col-xs-12 btn btn-primary text-center"><h3>Elèves :
              <select class="onglet_eleve2">
                     <option value="1">John Doe</option>
                     <option value="2">James Dozé</option>
@@ -98,81 +99,65 @@
                     <option value="5">John Doe</option>
                 </select>
                  <button class="btn btn-info"><span class="glyphicon glyphicon-pencil"></span>   Modifier les élèves</button></h3>
-                 </div><br><br>
-            <div class="col-xs-12 col-md-4 onglet_eleve text-center"><h3>Matières</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve text-center"><h3>Notes</h3></div>
-                <div class="col-xs-12 col-md-4 onglet_eleve text-center"><h3>Appréciations</h3></div>
-        </div>
-        <div class="row ombrage">
+            </td><br><br>
+            </tr>
+        </table>
+        <table>
+        <tr class="row ombrage">
+            <td class="col-xs-12 col-md-4 onglet_eleve text-center"><h3>Matières</h3></td>
+            <td class="col-xs-12 col-md-4 onglet_eleve text-center"><h3>Notes</h3></td>
+                <td class="col-xs-12 col-md-4 onglet_eleve text-center"><h3>Appréciations</h3></td>
+        
+        </tr>
+        <tr class="row ombrage">
 
-            <div class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Math</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>18</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve4 text-center"><h3>Bien joué !</h3></div>
-            </div>
-        <div class="row ombrage">
+            <td class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Math</h3></td>
+            <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>18</h3></td>
+            <td class="col-xs-12 col-md-4 onglet_eleve4 text-center"><h3>Bien joué !</h3></td>
+        </tr>
+         <tr class="row ombrage">
 
-            <div class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Français</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>18</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve4 text-center"><h3>Bien joué !</h3></div>
-            </div>
-         <div class="row ombrage">
+            <td class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Anglais</h3></td>
+            <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>18</h3></td>
+            <td class="col-xs-12 col-md-4 onglet_eleve4 text-center"><h3>Bien joué !</h3></td>
+        </tr>
+         <tr class="row ombrage">
 
-            <div class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Histoire</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>18</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve4 text-center"><h3>Bien joué !</h3></div>
-            </div>
-          <div class="row ombrage">
+            <td class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Français</h3></td>
+            <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>18</h3></td>
+            <td class="col-xs-12 col-md-4 onglet_eleve4 text-center"><h3>Bien joué !</h3></td>
+        </tr>
+         <tr class="row ombrage">
 
-            <div class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Physique</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>18</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve4 text-center"><h3>Bien joué !</h3></div>
-            </div>
-         <div class="row ombrage">
+            <td class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>PPE</h3></td>
+            <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>18</h3></td>
+            <td class="col-xs-12 col-md-4 onglet_eleve4 text-center"><h3>Bien joué !</h3></td>
+        </tr>
+         <tr class="row ombrage">
 
-            <div class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Economie</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>18</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve4 text-center"><h3>Bien joué !</h3></div>
-            </div>
-         <div class="row ombrage">
+            <td class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>EDM</h3></td>
+            <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>18</h3></td>
+            <td class="col-xs-12 col-md-4 onglet_eleve4 text-center"><h3>Bien joué !</h3></td>
+        </tr>
+         <tr class="row ombrage">
 
-            <div class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Droit</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>18</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve4 text-center"><h3>Bien joué !</h3></div>
-            </div>
-          <div class="row ombrage">
+            <td class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Histoire</h3></td>
+            <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>18</h3></td>
+            <td class="col-xs-12 col-md-4 onglet_eleve4 text-center"><h3>Bien joué !</h3></td>
+        </tr>
+         <tr class="row ombrage">
 
-            <div class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Anglais</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>18</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve4 text-center"><h3>Bien joué !</h3></div>
-            </div>
+            <td class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Géographie</h3></td>
+            <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>18</h3></td>
+            <td class="col-xs-12 col-md-4 onglet_eleve4 text-center"><h3>Bien joué !</h3></td>
+        </tr>
+         <tr class="row ombrage">
 
-          <div class="row ombrage">
-
-            <div class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Géographie</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>18</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve4 text-center"><h3>Bien joué !</h3></div>
-            </div>
-
-        <div class="row ombrage">
-
-            <div class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Math</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>18</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve4 text-center"><h3>Bien joué !</h3></div>
-        </div>
-
-          <div class="row ombrage">
-
-            <div class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Math</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>18</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve4 text-center"><h3>Bien joué !</h3></div>
-            </div>
-
-          <div class="row ombrage">
-
-            <div class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Math</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>18</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve4 text-center"><h3>Bien joué !</h3></div>
-            </div>
+            <td class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Math</h3></td>
+            <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>18</h3></td>
+            <td class="col-xs-12 col-md-4 onglet_eleve4 text-center"><h3>Bien joué !</h3></td>
+        </tr>
+        </table>
 
         <div class="row">
 
