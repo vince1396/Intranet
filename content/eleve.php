@@ -17,19 +17,20 @@
 
         </div>
         <br>
-        <div class="row">
-            <div class="col-xs-12 col-md-4 onglet_eleve"><h3>Matière</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve"><h3>Notes</h3></div>
-            <div class="col-xs-12 col-md-4 onglet_eleve"><h3>Appréciations</h3></div>
-        </div>
+        <table>
+        <tr class="row">
+            <td class="col-xs-12 col-md-4 onglet_eleve"><h3>Matière</h3></td>
+            <td class="col-xs-12 col-md-4 onglet_eleve"><h3>Notes</h3></td>
+            <td class="col-xs-12 col-md-4 onglet_eleve"><h3>Appréciations</h3></td>
+        </tr>
 
         <?php
           $req1 = displayMatiere($_SESSION['classe'], $bdd);
           while($rep1 = $req1->fetch())
           { ?>
-          <div class="row">
-              <div class="col-xs-12 col-md-4 onglet_eleve2"><h3><?php echo $rep1['nom_m']; ?></h3></div>
-              <div class="col-xs-12 col-md-4 onglet_eleve1"><h3>
+          <tr class="row">
+              <td class="col-xs-12 col-md-4 onglet_eleve2"><h3><?php echo $rep1['nom_m']; ?></h3></td>
+              <td class="col-xs-12 col-md-4 onglet_eleve1"><h3>
               <?php
                 $req2 = displayNote($_SESSION['id'], $rep1['id_m'], $bdd);
                 while($rep2 = $req2->fetch())
@@ -37,8 +38,8 @@
                   echo " ".$rep2['note']." / ";
                 }
               ?>
-              </h3></div>
-              <div class="col-xs-12 col-md-4 onglet_eleve4">
+              </h3></td>
+              <td class="col-xs-12 col-md-4 onglet_eleve4">
                 <?php
                   $req3 = displayAppreciation($rep1['id_m'], $_SESSION['id'], $bdd);
                   while($rep3 = $req3->fetch())
@@ -46,9 +47,10 @@
                     echo $rep3['appreciation'];
                   }
                 ?>
-              </div>
-          </div>
+              </td>
+          </tr>
         <?php } ?>
+        </table>
         <br />
         <br />
          <div class="row">
