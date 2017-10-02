@@ -590,7 +590,13 @@
 <?php
   function displayClasse($id_p, $bdd)
   {
-    $req = $bdd->prepare("SELECT DISTINCT c.nom_c, c.id_c FROM classes c, suivre s, matiere m, enseigner e, prof p WHERE c.id_c = s.id_c AND s.id_c = m.id_m AND m.id_m = e.id_m AND e.id_p = :id_p");
+    $req = $bdd->prepare("SELECT DISTINCT c.id_c, c.nom_c
+                          FROM classes c, suivre s, matiere m, enseigner e
+                          WHERE c.id_c = s.id_c
+                          AND s.id_m = m.id_m
+                          AND m.id_m = e.id_m
+                          AND e.id_p = 4
+                        ");
     $req->bindValue('id_p', $id_p, PDO::PARAM_INT);
     $req->execute();
 
