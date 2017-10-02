@@ -17,7 +17,7 @@
                       }
                     ?>
                   </select>
-                  <input type="submit" name="submit" value="Selectionner">
+                  <input type="submit" name="submit" class="btn btn-success bouton1" value="Selectionner">
                 </form>
 
                 <?php
@@ -64,7 +64,33 @@
         </table>
            
             <div class="row">
-            <div class="col-xs-12 col-md-4 bouton1"><button class="btn btn-info"><h5><span class="glyphicon glyphicon-pencil"></span> Modifier les élèves</h5></button></div><div class="col-xs-12 col-md-4 bouton1"><button class="btn btn-info"><h5><span class="glyphicon glyphicon-pencil"></span> Modifier les notes</h5></button></div>
+            <div class="col-xs-12 col-md-12 bouton1">
+            
+            <form method="post" action="#">
+            
+            <span  class="btn btn-primary bouton_titre bouton1">Devoirs: </span><select name="devoir" class="btn btn-info select_class bouton1">
+                <option value="1">DST</option>
+                <option value="2">Partiel</option>
+                <option value="3">Contrôle 1</option>
+                </select>
+            <span class="btn btn-primary bouton_titre bouton1">Note : </span><input type="text" name="note" class="btn btn-default bouton1">
+            <span  class="btn btn-primary bouton_titre bouton1">Elève: </span>
+               <select class="btn btn-info select_class bouton1" name="eleve">
+                <?php
+                        
+                        if(isset($_POST["submit"]))
+                        {
+                            $req2 = displayEleve($_POST['classe'], $bdd);
+                            while($rep2 = $req2->fetch())
+                            {
+                                echo "<option value=".$rep2["id_e"].">".$rep2['nom']." ".$rep2['prenom']."</option>";
+                            }
+                        }
+                    ?>
+            </select>
+            <button class="btn btn-success" type="submit" name="ajouter_note"><h5><span class="glyphicon glyphicon-plus"></span>Ajouter une note</h5></button>
+            </form>
+            </div>
           </div> <?php
           }
         ?>
@@ -114,12 +140,10 @@
                 <?php
 
                     $req = $bdd->query("SELECT * FROM eleve");
-                    $i = 1;
 
                     while($reponse = $req->fetch())
                     {
-                            echo "<option value='".$i."'>".$reponse['nom']." ".$reponse['prenom']."</option>";
-                            $i++;
+                            echo "<option value='".$reponse['id_e']."'>".$reponse['nom']." ".$reponse['prenom']."</option>";
 
                     }
                 ?>
