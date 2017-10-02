@@ -1,12 +1,12 @@
 <div class="back_admin">
     <div class="container">
        <div class="row row1">
-            <div class="col-md-12 col-xs-12"><span class="btn btn-primary bouton_titre"><h4>Gestion des élèves </h4></span> 
-              
+            <div class="col-md-12 col-xs-12"><span class="btn btn-primary bouton_titre"><h4>Gestion des élèves </h4></span>
+
                <form method="post">
                  <div>
-                    <select class="btn btn-info select_class" name="classe">
-                       
+                    <select class="btn btn-info select_class" name="classe[]">
+
                         <h5><option value="1">Classe 1</option>
                         <option value="2">Classe 2</option>
                         <option value="3">Classe 3</option>
@@ -18,16 +18,16 @@
 
                     Nom élève: <input type="text" name="nom_e[]">
                     Prénom élève: <input type="text" name="prenom_e[]">
-                    
+
                     <button class="btn btn-success select_class" type="submit" name="submit"><span class="glyphicon glyphicon-plus"></span> Ajouter un élève</button>
                  </div>
-                 
-                 
+
+
                  <!--Formulaire caché-->
-                 
+
                   <div class="hidden" id="duplicate">
-                    <select class="btn btn-info select_class" name="classe">
-                       
+                    <select class="btn btn-info select_class" name="classe[]">
+
                         <h5><option value="1">Classe 1</option>
                         <option value="2">Classe 2</option>
                         <option value="3">Classe 3</option>
@@ -39,11 +39,10 @@
 
                     Nom élève: <input type="text" name="nom_e[]">
                     Prénom élève: <input type="text" name="prenom_e[]">
-                    
-                    <button class="btn btn-success select_class" type="submit" name="submit"><span class="glyphicon glyphicon-plus"></span> Ajouter un élève</button>
-                    
+
+
                    </div>
-                   
+
                    <button class="btn btn-success select_class" type="submit" name="submit" id="duplicatebtn"><span class="glyphicon glyphicon-plus"></span> Ajouter un autre élève</button>
                 </form>
                 <script
@@ -59,33 +58,33 @@
                         })
                     })(jQuery);
                 </script>
-                
+
                 <?php
-                
+
                     if(isset($_POST["submit"])){
-                        
+
                         extract($_POST);
-                       
-                        
+
+
                         foreach($nom_e as $k => $v)
                         {
                             if($v != "")
                             {
                             $req = $bdd->prepare("INSERT INTO eleve(nom_e, prenom_e, id_c) VALUES(?, ?, ?)");
-                            $req->execute(array($nom_e[$k], $prenom_e[$k], $classe));
+                            $req->execute(array($nom_e[$k], $prenom_e[$k], $classe[$k]));
                             }
                         }
-                        
+
                         echo '<div class="row ombrage">';
                         echo '<div class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3></h3></div>';
                         echo '<div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3></h3></div>';
                         echo '<div class="col-xs-12 col-md-4 onglet_eleve4 text-center"><h3></h3></div>';
                         echo '</div>';
                     }
-                
-                
+
+
                 ?>
-                
+
             </div>
         </div>
         <br>
@@ -146,35 +145,35 @@
             <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>18</h3></div>
             <div class="col-xs-12 col-md-4 onglet_eleve4 text-center"><h3>Bien joué !</h3></div>
             </div>
-            
+
           <div class="row ombrage">
 
             <div class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Géographie</h3></div>
             <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>18</h3></div>
             <div class="col-xs-12 col-md-4 onglet_eleve4 text-center"><h3>Bien joué !</h3></div>
             </div>
-            
+
         <div class="row ombrage">
 
             <div class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Math</h3></div>
             <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>18</h3></div>
             <div class="col-xs-12 col-md-4 onglet_eleve4 text-center"><h3>Bien joué !</h3></div>
         </div>
-            
+
           <div class="row ombrage">
 
             <div class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Math</h3></div>
             <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>18</h3></div>
             <div class="col-xs-12 col-md-4 onglet_eleve4 text-center"><h3>Bien joué !</h3></div>
             </div>
-            
+
           <div class="row ombrage">
 
             <div class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Math</h3></div>
             <div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>18</h3></div>
             <div class="col-xs-12 col-md-4 onglet_eleve4 text-center"><h3>Bien joué !</h3></div>
             </div>
-            
+
         <div class="row">
 
             <div class="col-xs-12 col-md-4 bouton1">
