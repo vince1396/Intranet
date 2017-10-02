@@ -2,17 +2,31 @@
   if(isset($_POST['admin']))
   {
     extract($_POST);
-    echo multipleLogin($email, $mdp, 2, $bdd);
+?> 
+  <center><div class="col-xs-12 col-md-12 alert alert-danger">
+    <h3 class="alert-link"><?php echo multipleLogin($email, $mdp, 2, $bdd);?> </h3>
+  </div></center>
+   
+<?php
   }
   elseif (isset($_POST['prof']))
   {
     extract($_POST);
-    echo multipleLogin($email, $mdp, 1, $bdd);
+ ?>
+  <center><div class="col-xs-12 col-md-12 alert alert-danger">
+     <h3 class="alert-link"><?php echo multipleLogin($email, $mdp, 1, $bdd); ?> </h3>
+  </div></center>
+  
+  <?php
   }
   elseif (isset($_POST['eleve']))
   {
     extract($_POST);
-    echo multipleLogin($email, $mdp, 0, $bdd);
+ ?>
+  <center><div class="col-xs-12 col-md-12 alert alert-danger">
+      <h3 class="alert-link"><?php echo multipleLogin($email, $mdp, 0, $bdd); ?> </h3>
+  </div></center>
+<?php 
   }
 ?>
 
@@ -42,6 +56,9 @@ else
   <div class="container">
     <div class="row">
 
+       <div class="col-xs-12">
+           <h1></h1>
+       </div>
         <div class="col-md-4 col-xs-12">
             <div class="case1">
                 <h3  class="role"><span class="glyphicon glyphicon-king"></span> Administrateurs</h3>
