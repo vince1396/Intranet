@@ -31,7 +31,7 @@
               <div class="col-xs-12 col-md-4 onglet_eleve2"><h3><?php echo $rep1['nom_m']; ?></h3></div>
               <div class="col-xs-12 col-md-4 onglet_eleve1"><h3>
               <?php
-                $req2 = displayNote($rep1['id_m'], $bdd);
+                $req2 = displayNote($_SESSION['id'], $rep1['id_m'], $bdd);
                 while($rep2 = $req2->fetch())
                 {
                   echo " ".$rep2['note']." / ";
@@ -55,20 +55,13 @@
             <div class="col-xs-12">
                 <a href="index.php"><button class="btn btn-primary bouton1"><span class="glyphicon glyphicon-home"></span> <h4>Revenir à l'accueil</h4></button></a>
             </div>
-<<<<<<< HEAD
-        </div>
-</div>
-=======
-
-
-
     </div>
-    
+
     <?php
     if(isset($_POST['submit']))
     {
         extract($_POST);
-        
+
         $requete = $bdd->prepare("SELECT id_p FROM prof WHERE id_p = :dest");
         $requete->bindValue(':dest',$destinataire,PDO::PARAM_STR);
         $requete->execute();
@@ -81,7 +74,7 @@
             $requete->bindValue(':dest',$reponse['id_p'],PDO::PARAM_INT);
             $requete->bindValue(':exp',$_SESSION['id'],PDO::PARAM_INT);
             $requete->execute();
-            
+
             echo"<center><h4>message envoyé</h4></center>";
         }
         else
@@ -91,23 +84,23 @@
     }
 
 ?>
-   
+
 
 
     <header>
         <h2>Envoyer un message</h2>
     </header>
-    
+
     <form method="post" action="#">
-       
+
        <div class="form-group">
            <label for="exampleInputEmail1" class="text-size">Destinataire</label>
             <select class="form-control" name="destinataire">
                 <?php
-                
+
                     $req = $bdd->query("SELECT * FROM prof");
                     $i = 1;
-                 
+
                     while($reponse = $req->fetch())
                     {
                         if($reponse['lvl'] < 2)
@@ -115,7 +108,7 @@
                             echo "<option value='".$i."'>".$reponse['nom']." ".$reponse['prenom']."</option>";
                             $i++;
                         }
-                    }   
+                    }
                 ?>
             </select>
         </div>
@@ -128,5 +121,4 @@
         </div>
         <button type="submit" class="btn btn-default" name="submit">Envoyer</button>
     </form>
->>>>>>> 49184bcb4ad22098646ad6e84eeddbd48c13d77d
 </div>

@@ -224,7 +224,7 @@
 
       if($rep)
       {
-        if(isset($_rep['p']))
+        if(isset($rep['id_p']))
         {
           $_SESSION['id'] = $rep['id_p'];
         }
@@ -567,9 +567,10 @@
 <!-- ====================================================================================================================================================== -->
                                                              <!-- AFFICHAGE -->
 <?php
-  function displayEleve($bdd)
+  function displayEleve($id_c, $bdd)
   {
-    $req = $bdd->prepare("SELECT * FROM eleve");
+    $req = $bdd->prepare("SELECT e.nom, e.prenom, e.id_e FROM eleve e WHERE e.id_c = :id_c");
+    $req->bindValue('id_c', $id_c, PDO::PARAM_INT);
     $req->execute();
 
     return $req;
@@ -587,9 +588,10 @@
 ?>
 <!-- ================================= -->
 <?php
-  function displayClasse($bdd)
+  function displayClasse($id_p, $bdd)
   {
-    $req = $bdd->prepare("SELECT * FROM classes");
+    $req = $bdd->prepare("SELECT DISTINCT c.nom_c, c.id_c FROM classes c, suivre s, matiere m, enseigner e, prof p WHERE c.id_c = s.id_c AND s.id_c = m.id_m AND m.id_m = e.id_m AND e.id_p = :id_p");
+    $req->bindValue('id_p', $id_p, PDO::PARAM_INT);
     $req->execute();
 
     return $req;
@@ -607,6 +609,17 @@
 ?>
 <!-- ================================= -->
 <?php
+function displayMatiereProf($id_p, $bdd)
+{
+  $req = $bdd->prepare("SELECT m.id_m, m.nom_m FROM matiere m, enseigner e WHERE m.id_m = e.id_m AND e.id_p = :id_p");
+  $req->bindValue('id_p', $id_p, PDO::PARAM_INT);
+  $req->execute();
+
+  return $req;
+}
+?>
+<!-- ================================= -->
+<?php
 function displayMatiere($id_c, $bdd)
 {
   $req = $bdd->prepare("SELECT DISTINCT nom_m, m.id_m FROM matiere m, suivre s, classes c where m.id_m = s.id_m AND s.id_c = :id_c");
@@ -618,7 +631,7 @@ function displayMatiere($id_c, $bdd)
 ?>
 <!-- ================================= -->
 <?php
-  function displayNote($id_m, $bdd)
+  function displayNote($id_e, $id_m, $bdd)
   {
     $req = $bdd->prepare("SELECT DISTINCT note FROM noter n, devoirs d, suivre s WHERE n.id_e = :id_e AND n.id_d = d.id_d AND d.id_m = :id_m");
     $req->bindValue('id_e', $_SESSION['id'], PDO::PARAM_INT);
