@@ -23,19 +23,7 @@
                  </div>
                 </form>
                 
-                <script
-  src="https://code.jquery.com/jquery-3.1.1.min.js"
-  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-  crossorigin="anonymous"></script>
-                <script>
-                    (function ($){
-                        $('#duplicatebtn').click(function (e) {
-                            e.preventDefault();
-                            var clone = $('#duplicate').clone().attr('id','').removeClass('hidden');
-                            $('#duplicate').before(clone);
-                        })
-                    })(jQuery);
-                </script>
+               
 
                
 
@@ -133,12 +121,6 @@
                             $req->execute(array($nom_e[$k], $prenom_e[$k], $classe[$k]));
                             }
                         }
-
-                        echo '<div class="row ombrage">';
-                        echo '<div class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3></h3></div>';
-                        echo '<div class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3></h3></div>';
-                        echo '<div class="col-xs-12 col-md-4 onglet_eleve4 text-center"><h3></h3></div>';
-                        echo '</div>';
                     }
 
 
@@ -201,5 +183,19 @@
                 </a>
             </div>
         </div>
+        
+         <script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+                <script>
+                    (function ($){
+                        $('#duplicatebtn').click(function (e) {
+                            e.preventDefault();
+                            var clone = $('#duplicate').clone().attr('id','').removeClass('hidden');
+                            $('#duplicate').before(clone);
+                        })
+                    })(jQuery);
+                </script>
     </div>
 </div>

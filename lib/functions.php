@@ -597,6 +597,18 @@
     return $req;
   }
 ?>
+
+<!-- ================================= -->
+<?php
+  function displayAllClasse($bdd)
+  {
+    $req = $bdd->prepare("SELECT * FROM classes");
+    $req->execute();
+
+    return $req;
+  }
+?>
+
 <!-- ================================= -->
 <?php
   function displaySemestre($bdd)
