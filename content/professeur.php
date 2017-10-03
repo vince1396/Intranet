@@ -57,7 +57,15 @@
                 }
               ?>
             </h3></td>
-            <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Bien joué !</h3></td>
+            <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>
+                <?php
+                    $req4 = displayAppreciation($rep1['id_m'], $rep2['id_e'], $bdd);
+                    while($rep4 = $req4->fetch())
+                    {
+                        echo $rep4['appreciation'];
+                    }
+                ?>
+                </h3></td>
             </tr>
             <?php } ?>
             
@@ -68,11 +76,21 @@
             
             <form method="post" action="#">
             
-            <span  class="btn btn-primary bouton_titre bouton1">Devoirs: </span><select name="devoir" class="btn btn-info select_class bouton1">
+            <span  class="btn btn-primary bouton_titre bouton1">Devoirs: </span>
+            <select name="devoir" class="btn btn-info select_class bouton1">
+               <?php
+              
+                    $req5 = displayDevoir($rep1['id_m'], $_POST['classe'], $bdd);
+                    while($rep5 = $req5->fetch())
+                    {
+                        echo"<option value=".$rep5["id_d"].">".$rep5["nom_d"]."</option>";
+                    }
+               ?>
+               
                 <option value="1">DST</option>
                 <option value="2">Partiel</option>
                 <option value="3">Contrôle 1</option>
-                </select>
+            </select>
             <span class="btn btn-primary bouton_titre bouton1">Note : </span><input type="text" name="note" class="btn btn-default bouton1">
             <span  class="btn btn-primary bouton_titre bouton1">Elève: </span>
                <select class="btn btn-info select_class bouton1" name="eleve">
@@ -90,6 +108,15 @@
             </select>
             <button class="btn btn-success" type="submit" name="ajouter_note"><h5><span class="glyphicon glyphicon-plus"></span>Ajouter une note</h5></button>
             </form>
+            
+            <?php
+              
+              if(isset($_POST['ajouter_note']))
+              {
+                  $req3 = AddNote($rep4['id_d'], $id_s, $rep2['id_e'], $note);
+              }
+            ?>
+                        
             </div>
           </div> <?php
           }
