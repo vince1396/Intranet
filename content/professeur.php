@@ -3,10 +3,32 @@
 
         <div class="row row1">
             <div class="col-xs-12">
-
+             
+            
+              <form class="" action="#" method="post">  
+                <span class="btn btn-info bouton1"> Matière :</span>
+                <select name="classe" class="btn btn-info select_class bouton1">
+                 <?php
+                    $req1 = displayMatiereProf($_SESSION['id'], $bdd);
+                    while($rep1 = $req1->fetch())
+                    {
+                        echo "<option value=".$rep1['id_m'].">".$rep1['nom_m']."</option>";
+                    }
+                 ?>
+                </select>
+                <input type="submit" name="submit" class="btn btn-success bouton1" value="Selectionner">
+                </form>
+                  </div>
+            </div>
+               
+            <div class="row row1">
+            <div class="col-xs-12">
+             
+            
+              <form class="" action="#" method="post">  
                 <span  class="btn btn-info bouton_titre bouton1">Classe :</span>
 
-                <form class="" action="#" method="post">
+                
 
                   <select name="classe" class="btn btn-info select_class bouton1">
                     <?php
@@ -17,15 +39,11 @@
                       }
                     ?>
                   </select>
-                  <input type="submit" name="submit" class="btn btn-success bouton1" value="Selectionner">
+                  <input type="submit" name="submit_classe" class="btn btn-success bouton1" value="Selectionner">
                 </form>
 
-                <?php
-                  $req1 = displayMatiereProf($_SESSION['id'], $bdd);
-                  $rep1 = $req1->fetch();
-                ?>
-                <span class="btn btn-info bouton1"> Matière : <?php echo $rep1['nom_m']; ?></span>
-
+                
+                
             
             </div>
 
@@ -50,7 +68,7 @@
             <td class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3><?php echo " ".$rep2['prenom']." ".$rep2['nom']; ?></h3></td>
             <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>
               <?php
-                $req3 = displayNote($rep2['id_e'], $_POST['classe'], $bdd);
+                $req3 = displayNote($rep2['id_e'], $rep1['id_m'], $bdd);
                 while($rep3 = $req3->fetch())
                 {
                     echo " ".$rep3['note']." / ";
