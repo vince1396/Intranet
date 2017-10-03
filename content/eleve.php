@@ -44,7 +44,7 @@
                   $req3 = displayAppreciation($rep1['id_m'], $_SESSION['id'], $bdd);
                   while($rep3 = $req3->fetch())
                   {
-                    echo $rep3['appreciation'];
+                    echo "<h4>".$rep3['appreciation']."</h4>";
                   }
                 ?>
               </td>

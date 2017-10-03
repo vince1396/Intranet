@@ -595,9 +595,9 @@
                           WHERE c.id_c = s.id_c
                           AND s.id_m = m.id_m
                           AND m.id_m = e.id_m
-                          AND e.id_p = 4
+                          AND e.id_p = :id_p
                         ");
-    $req->bindValue('id_p', $id_p, PDO::PARAM_INT);
+    $req->bindValue(':id_p', $id_p, PDO::PARAM_INT);
     $req->execute();
 
     return $req;
@@ -647,12 +647,24 @@ function displayMatiere($id_c, $bdd)
   return $req;
 }
 ?>
+
+<!-- ================================= -->
+<?php
+  function displayAllMatiere($bdd)
+  {
+    $req = $bdd->prepare("SELECT * FROM matiere");
+    $req->execute();
+
+    return $req;
+  }
+?>
+
 <!-- ================================= -->
 <?php
   function displayNote($id_e, $id_m, $bdd)
   {
     $req = $bdd->prepare("SELECT DISTINCT note FROM noter n, devoirs d, suivre s WHERE n.id_e = :id_e AND n.id_d = d.id_d AND d.id_m = :id_m");
-    $req->bindValue('id_e', $_SESSION['id'], PDO::PARAM_INT);
+    $req->bindValue('id_e', $id_e, PDO::PARAM_INT);
     $req->bindValue('id_m', $id_m, PDO::PARAM_INT);
     $req->execute();
 
@@ -673,7 +685,7 @@ function displayMatiere($id_c, $bdd)
 ?>
 
 <?php
-    function AddNote($id_d, $id_s, $id_e, $note)
+    function AddNote($id_d, $id_s, $id_e, $note, $bdd)
     {
         $req = $bdd->prepare("INSERT INTO noter(id_d, id_s, id_e, note) VALUES (:id_d, :id_s, :id_e, :note)");
         $req->bindValue('id_d', $id_d, PDO::PARAM_INT);
@@ -688,14 +700,14 @@ function displayMatiere($id_c, $bdd)
 ?>
 
 <?php
-    function DisplayDevoir($id_c, $bdd)
+    function DisplayDevoir($id_m, $id_c, $bdd)
     {
         $req = $bdd->prepare("SELECT DISTINCT nom_d FROM devoirs d, matiere m, suivre s, classes c WHERE d.id_m = m.id_m AND m.id_m = s.id_m AND s.id_c = c.id_c AND c.id_c = :id_c");
-        $req->bindValue('id_m', $id_m, PDO::PARAM_INT);
-        $req->bindValue('id_c', $id_c, PDO::PARAM_INT);
+        $req->bindValue(':id_m', $id_m, PDO::PARAM_INT);
+        $req->bindValue(':id_c', $id_c, PDO::PARAM_INT);
         $req->execute();
         
-         return $req;
+        return $req;
         
     }
 ?>
