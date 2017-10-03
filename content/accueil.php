@@ -35,7 +35,7 @@ if(isset($_SESSION['lvl']))
 {
     if($_SESSION['lvl'] == 0)
     {
-      header("Location:".BASE_URL."/eleve");
+      header("Location:index.php?p=eleve");
     }
     elseif($_SESSION['lvl'] == 1)
     {
@@ -43,7 +43,7 @@ if(isset($_SESSION['lvl']))
     }
     elseif($_SESSION['lvl'] == 2)
     {
-      header("Location:".BASE_URL."/admin");
+      header("Location:index.php?p=admin");
     }
     else
     {

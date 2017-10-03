@@ -238,7 +238,7 @@
         {
           $_SESSION['classe'] = $rep['id_c'];
         }
-        header("Location:index.php");
+        header("Location:index.php?p=accueil");
       }
       else
       {
@@ -566,10 +566,14 @@
 
 <!-- ====================================================================================================================================================== -->
                                                              <!-- AFFICHAGE -->
+<!-- Display Eleve by classe/ id_c = classe -->
 <?php
   function displayEleve($id_c, $bdd)
   {
-    $req = $bdd->prepare("SELECT e.nom, e.prenom, e.id_e FROM eleve e WHERE e.id_c = :id_c");
+    $req = $bdd->prepare("SELECT e.nom, e.prenom, e.id_e
+                          FROM eleve e
+                          WHERE e.id_c = :id_c
+                        ");
     $req->bindValue('id_c', $id_c, PDO::PARAM_INT);
     $req->execute();
 
@@ -587,6 +591,7 @@
   }
 ?>
 <!-- ================================= -->
+<!-- Display classe by prof / id_p = prof -->
 <?php
   function displayClasse($id_p, $bdd)
   {
@@ -603,7 +608,6 @@
     return $req;
   }
 ?>
-
 <!-- ================================= -->
 <?php
   function displayAllClasse($bdd)
@@ -614,7 +618,6 @@
     return $req;
   }
 ?>
-
 <!-- ================================= -->
 <?php
   function displaySemestre($bdd)
@@ -626,10 +629,15 @@
   }
 ?>
 <!-- ================================= -->
+<!-- Display matiere by prof / id_p = prof -->
 <?php
 function displayMatiereProf($id_p, $bdd)
 {
-  $req = $bdd->prepare("SELECT m.id_m, m.nom_m FROM matiere m, enseigner e WHERE m.id_m = e.id_m AND e.id_p = :id_p");
+  $req = $bdd->prepare("SELECT m.id_m, m.nom_m
+                        FROM matiere m, enseigner e
+                        WHERE m.id_m = e.id_m
+                        AND e.id_p = :id_p
+                      ");
   $req->bindValue('id_p', $id_p, PDO::PARAM_INT);
   $req->execute();
 
@@ -637,10 +645,15 @@ function displayMatiereProf($id_p, $bdd)
 }
 ?>
 <!-- ================================= -->
+<!-- Display Matiere by classe / id_c = classe -->
 <?php
 function displayMatiere($id_c, $bdd)
 {
-  $req = $bdd->prepare("SELECT DISTINCT nom_m, m.id_m FROM matiere m, suivre s, classes c where m.id_m = s.id_m AND s.id_c = :id_c");
+  $req = $bdd->prepare("SELECT DISTINCT nom_m, m.id_m
+                        FROM matiere m, suivre s, classes c
+                        WHERE m.id_m = s.id_m
+                        AND s.id_c = :id_c
+                      ");
   $req->bindValue('id_c', $id_c, PDO::PARAM_INT);
   $req->execute();
 
@@ -648,11 +661,17 @@ function displayMatiere($id_c, $bdd)
 }
 ?>
 <!-- ================================= -->
+<!-- Display note d'un eleve / id_e = eleve / id_m = matiere -->
 <?php
   function displayNote($id_e, $id_m, $bdd)
   {
-    $req = $bdd->prepare("SELECT DISTINCT note FROM noter n, devoirs d, suivre s WHERE n.id_e = :id_e AND n.id_d = d.id_d AND d.id_m = :id_m");
-    $req->bindValue('id_e', $_SESSION['id'], PDO::PARAM_INT);
+    $req = $bdd->prepare("SELECT DISTINCT note
+                          FROM noter n, devoirs d
+                          WHERE n.id_e = :id_e
+                          AND n.id_d = d.id_d
+                          AND d.id_m = :id_m
+                        ");
+    $req->bindValue('id_e', $id_e, PDO::PARAM_INT);
     $req->bindValue('id_m', $id_m, PDO::PARAM_INT);
     $req->execute();
 
@@ -660,10 +679,14 @@ function displayMatiere($id_c, $bdd)
   }
 ?>
 <!-- ================================= -->
+<!-- Display appréciation d'un eleve pour une matiere -->
 <?php
   function displayAppreciation($id_m, $id_e, $bdd)
   {
-    $req = $bdd->prepare("SELECT appreciation FROM commenter WHERE id_m = :id_m AND id_e = :id_e");
+    $req = $bdd->prepare("SELECT appreciation
+                          FROM commenter
+                          WHERE id_m = :id_m
+                          AND id_e = :id_e");
     $req->bindValue('id_m', $id_m, PDO::PARAM_INT);
     $req->bindValue('id_e', $id_e, PDO::PARAM_INT);
     $req->execute();
@@ -671,40 +694,39 @@ function displayMatiere($id_c, $bdd)
     return $req;
   }
 ?>
-
-<?php
-    function AddNote($id_d, $id_s, $id_e, $note)
-    {
-        $req = $bdd->prepare("INSERT INTO noter(id_d, id_s, id_e, note) VALUES (:id_d, :id_s, :id_e, :note)");
-        $req->bindValue('id_d', $id_d, PDO::PARAM_INT);
-        $req->bindValue('id_s', $id_s, PDO::PARAM_INT);
-        $req->bindValue('id_e',$id_e, PDO::PARAM_INT);
-        $req->bindValue('note',$note, PDO::PARAM_INT);
-
-        $req->execute();
-        
-        return $req;
-    }
-?>
-
+<!-- ================================= -->
 <?php
     function DisplayDevoir($id_c, $bdd)
     {
-        $req = $bdd->prepare("SELECT DISTINCT nom_d FROM devoirs d, matiere m, suivre s, classes c WHERE d.id_m = m.id_m AND m.id_m = s.id_m AND s.id_c = c.id_c AND c.id_c = :id_c");
+        $req = $bdd->prepare("SELECT DISTINCT nom_d
+                              FROM devoirs d, matiere m, suivre s, classes c
+                              WHERE d.id_m = m.id_m
+                              AND m.id_m = s.id_m
+                              AND s.id_c = c.id_c
+                              AND c.id_c = :id_c");
         $req->bindValue('id_m', $id_m, PDO::PARAM_INT);
         $req->bindValue('id_c', $id_c, PDO::PARAM_INT);
         $req->execute();
-        
+
          return $req;
-        
+
     }
 ?>
+<!-- ================================= -->
+<?php
+function AddNote($id_d, $id_s, $id_e, $note, $bdd)
+{
+  $req = $bdd->prepare("INSERT INTO noter(id_d, id_s, id_e, note) VALUES (:id_d, :id_s, :id_e, :note)");
+  $req->bindValue('id_d', $id_d, PDO::PARAM_INT);
+  $req->bindValue('id_s', $id_s, PDO::PARAM_INT);
+  $req->bindValue('id_e',$id_e, PDO::PARAM_INT);
+  $req->bindValue('note',$note, PDO::PARAM_INT);
 
+  $req->execute();
 
-
-
-
-
+  return $req;
+}
+?>
 
 
 
