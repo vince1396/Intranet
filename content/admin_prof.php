@@ -17,41 +17,38 @@
             <td class="col-xs-12 col-md-4 onglet_eleve" text-center><h3>Matières</h3></td>
             <td class="col-xs-12 col-md-4 onglet_eleve" text-center><h3>Classes</h3></td>
         </tr>
-        <tr class="row">
-              <td class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Monsieur Jean-Mi</h3></td>
-              <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Maths</h3></td>
-              <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Classe 1</h3></td>
-        </tr>
-        <tr class="row">
-              <td class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Monsieur Jean-Mi</h3></td>
-              <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Maths</h3></td>
-              <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Classe 1</h3></td>
-        </tr>
-        <tr class="row">
-              <td class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Monsieur Jean-Mi</h3></td>
-              <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Maths</h3></td>
-              <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Classe 1</h3></td>
-        </tr>
-        <tr class="row">
-              <td class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Monsieur Jean-Mi</h3></td>
-              <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Maths</h3></td>
-              <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Classe 1</h3></td>
-        </tr>
-        <tr class="row">
-              <td class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Monsieur Jean-Mi</h3></td>
-              <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Maths</h3></td>
-              <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Classe 1</h3></td>
-        </tr>
-        <tr class="row">
-              <td class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Monsieur Jean-Mi</h3></td>
-              <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Maths</h3></td>
-              <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Classe 1</h3></td>
-        </tr>
-        <tr class="row">
-              <td class="col-xs-12 col-md-4 onglet_eleve2 text-center"><h3>Monsieur Jean-Mi</h3></td>
-              <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Maths</h3></td>
-              <td class="col-xs-12 col-md-4 onglet_eleve1 text-center"><h3>Classe 1</h3></td>
-        </tr>
+        
+        <?php
+             
+             $req1 = displayProf($bdd);
+             
+             while($rep1 = $req1->fetch())
+             {
+                 echo "<tr class='row'>";
+                 echo "<td class='col-xs-12 col-md-4 onglet_eleve2 text-center'>";
+                 echo "<h3>".$rep1['nom']." ".$rep1['prenom']."</h3></td>";
+                 echo "<td class='col-xs-12 col-md-4 onglet_eleve1 text-center'>";
+                 $req2 = displayMatiereProf($rep1['id_p'], $bdd);
+                 while($rep2 = $req2->fetch())
+                 {
+                     echo "<h3>".$rep2['nom_m']."</h3>";
+                }
+                     $req3 = displayClasse($rep1['id_p'], $bdd);
+                     
+                     echo "<td class='col-xs-12 col-md-4 onglet_eleve1 text-center'>";
+                     while($rep3 = $req3->fetch())
+                     {
+                         
+                         echo "<h3>".$rep3['nom_c']."</h3>";
+                     }
+                     
+                     echo "</td>";
+                 
+                 echo"</td>";
+             }
+             echo "</tr>";
+        ?>
+        
         </table>
         
         <?php
