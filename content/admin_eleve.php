@@ -106,29 +106,9 @@
         <br>
         
         
-         <?php
-
-                    if(isset($_POST["submit"])){
-
-                        extract($_POST);
-
-
-                        foreach($nom_e as $k => $v)
-                        {
-                            if($v != "")
-                            {
-                            $req = $bdd->prepare("INSERT INTO eleve(nom_e, prenom_e, id_c) VALUES(?, ?, ?)");
-                            $req->execute(array($nom_e[$k], $prenom_e[$k], $classe[$k]));
-                            }
-                        }
-                    }
-
-
-                ?>
-                
         <!--- AJOUT ELEVE--->
-            
-            <form method="post">
+
+                <form method="post">
                  <div>
                     <select class="btn btn-info select_class" name="classe">
                     <?php
@@ -144,35 +124,13 @@
                     ?>
                         
                     </select>
+                    email élève: <input type="email" name="email">
+                    mdp élève: <input type="password" name="mdp">
+                    Nom élève: <input type="text" name="nom">
+                    Prénom élève: <input type="text" name="prenom">
 
-                    Nom élève: <input type="text" name="nom_e[]">
-                    Prénom élève: <input type="text" name="prenom_e[]">
-
-                    <button class="btn btn-success select_class" type="submit" name="submit"><span class="glyphicon glyphicon-plus"></span> Ajouter un élève</button>
+                    <button class="btn btn-success select_class" type="submit" name="submitaddele"><span class="glyphicon glyphicon-plus"></span> Ajouter un élève</button>
                  </div>
-
-
-                 <!--Formulaire caché-->
-
-                  <div class="hidden" id="duplicate">
-                    <select class="btn btn-info select_class" name="classe[]">
-
-                        <h5><option value="1">Classe 1</option>
-                        <option value="2">Classe 2</option>
-                        <option value="3">Classe 3</option>
-                        <option value="4">Classe 4</option>
-                        <option value="5">Classe 5</option>
-                        <option value="6">Classe 6</option>
-                    </h5>
-                    </select>
-
-                    Nom élève: <input type="text" name="nom_e[]">
-                    Prénom élève: <input type="text" name="prenom_e[]">
-
-
-                   </div>
-
-                   <button class="btn btn-success select_class" type="submit" name="submit" id="duplicatebtn"><span class="glyphicon glyphicon-plus"></span> Ajouter un autre élève</button>
                 </form>
         <!------------------>
         <div class="row">
