@@ -155,6 +155,42 @@
                          $req7 = addProf($_POST['email'], $_POST['nom'], $_POST['prenom'],$rep6['id_m'], $bdd);
                     }
                 ?>
+                
+                
+                
+                
+                
+                <!--SUPPRESSION DE PROFFESSEUR -->
+                
+<?php
+        if(isset($_POST['submitsup']))
+            {
+                 $recupprof = $_POST['professeur'];
+                 $supprof = $bdd->query("DELETE FROM prof WHERE id_p='".$recupprof."'");
+                 header('location:'.BASE_URL.'/admin_prof');
+            }
+        ?>
+    <form method="post">
+        <label class="btn btn-primary bouton1"> <u><b>Supprimer un professeur:</b></u>
+            <select class="btn btn-info select_class" name="professeur">
+                <?php
+                        
+                        $req = displayProf($bdd);
+                        while($rep = $req->fetch())
+                        {
+                            echo"<option value=".$rep['id_p'].">".$rep['nom']." ".$rep['prenom']."</option>";
+                        }
+                    
+                    ?>
+            </select>
+        </label>
+        <button class="btn btn-danger" name="submitsup" type="submit">Supprimer</button>
+    </form>
+                
+                
+                
+                
+                
             </div>
         
     </div>
