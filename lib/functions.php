@@ -705,6 +705,7 @@ function displayMatiere($id_c, $bdd)
 
     return $req;
   }
+
   function AddNote($id_d, $id_s, $id_e, $note, $bdd)
   {
     $req = $bdd->prepare("INSERT INTO noter(id_d, id_s, id_e, note) VALUES (:id_d, :id_s, :id_e, :note)");
@@ -717,18 +718,15 @@ function displayMatiere($id_c, $bdd)
 
     return $req;
   }
-    function DisplayDevoir($id_m, $id_c, $bdd)
-    {
-        $req = $bdd->prepare("SELECT DISTINCT nom_d
-                              FROM devoirs d, matiere m, suivre s, classes c
-                              WHERE d.id_m = m.id_m
-                              AND m.id_m = s.id_m
-                              AND s.id_c = c.id_c
-                              AND c.id_c = :id_c");
-        $req->bindValue('id_m', $id_m, PDO::PARAM_INT);
-        $req->bindValue('id_c', $id_c, PDO::PARAM_INT);
-        $req->execute();
+  function DisplayDevoir($id_m, $bdd)
+  {
+    $req = $bdd->prepare("SELECT DISTINCT nom_d, id_d
+                          FROM devoirs d
+                          WHERE d.id_m = :id_m
+                        ");
+    $req->bindValue('id_m', $id_m, PDO::PARAM_INT);
+    $req->execute();
 
-         return $req;
+    return $req;
     }
 ?>
