@@ -708,7 +708,7 @@ function displayMatiere($id_c, $bdd)
 
   function AddNote($id_d, $id_s, $id_e, $note, $bdd)
   {
-    $req = $bdd->prepare("INSERT INTO noter(id_d, id_s, id_e, note) VALUES (:id_d, :id_s, :id_e, :note)");
+    $req = $bdd->prepare("INSERT INTO noter VALUES (:id_d, :id_s, :id_e, :note)");
     $req->bindValue('id_d', $id_d, PDO::PARAM_INT);
     $req->bindValue('id_s', $id_s, PDO::PARAM_INT);
     $req->bindValue('id_e',$id_e, PDO::PARAM_INT);
@@ -716,7 +716,7 @@ function displayMatiere($id_c, $bdd)
 
     $req->execute();
 
-    return $req;
+
   }
   function DisplayDevoir($id_m, $bdd)
   {

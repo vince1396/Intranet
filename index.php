@@ -1,6 +1,7 @@
 <?php
      session_start();
      print_r($_SESSION);
+     print_r($_POST);
 
     define('WEBROOT', dirname(__FILE__));
     define('BASE_URL', dirname($_SERVER['SCRIPT_NAME']));
