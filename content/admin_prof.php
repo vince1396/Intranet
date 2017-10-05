@@ -89,17 +89,35 @@
       
         
         <div class="row">
-            <div class="col-xs-12 bouton1"><button class="btn btn-info"><span class="glyphicon glyphicon-plus"></span><h4>Modifier Professeur</h4></button>
-                <button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span><h4>Ajouter Professeur</h4></button></div>
-            
-            <div class="col-xs-12 bouton1"><button class="btn btn-info"><span class="glyphicon glyphicon-plus"></span><h4>Modifier Matière</h4></button> <button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span><h4>Ajouter Matière</h4></button></div>
+                
+            <form method="post" action="#">
             <div class="col-xs-12 bouton1">
-               <button class="btn btn-info"><span class="glyphicon glyphicon-plus"></span><h4>Modifier Classe</h4></button>
+               <label type="text" class="btn btn-primary bouton1">Nom de la matière: <input type="text" name="nom_m" class="font_color"></label>
+                <button class="btn btn-success" type="submit" name="submit_matiere">
+                    <span class="glyphicon glyphicon-plus"></span><h4>Ajouter Matière</h4>
+                </button>
+            </div>
+            </form>
+            
+            <?php
+                
+                if(isset($_POST['submit_matiere']))
+                {
+                    $nom_m = $_POST['nom_m'];
+                    $req4 = $bdd->prepare("INSERT INTO matiere (nom_m) VALUES(:nom_m)");
+                    $req4->bindValue(':nom_m', $nom_m, PDO::PARAM_STR);
+                    $req4->execute();
+                }
+            
+            ?>
+            
+            <div class="col-xs-12 col-md-12 bouton1">
+              
                <form method="post">
-                   <label type="text" class="btn btn-primary ">Nom: <input type="text" name="nom" class="font_color"></label>
-                   <label type="text" class="btn btn-primary ">Prénom: <input type="text" name="prenom" class="font_color"></label>
-                   <label type="text" class="btn btn-primary ">Email: <input type="email" name="email" class="font_color"></label>
-                   <label class="btn btn-primary"><u><b>Classe:</b></u>
+                   <label type="text" class="btn btn-primary  bouton1">Nom: <input type="text" name="nom" class="font_color"></label>
+                   <label type="text" class="btn btn-primary bouton1 ">Prénom: <input type="text" name="prenom" class="font_color"></label>
+                   <label type="text" class="btn btn-primary bouton1 ">Email: <input type="email" name="email" class="font_color"></label>
+                   <label class="btn btn-primary bouton1"><u><b>Classe:</b></u>
                           <?php
                             
                                 $req5 = displayAllClasse($bdd);
@@ -112,7 +130,7 @@
                           ?>  
                    </label>
                     <br>
-                   <label class="btn btn-primary"> <u><b>Matière:</b></u>
+                   <label class="btn btn-primary bouton1"> <u><b>Matière:</b></u>
                             <?php
                             
                                 $req6 = displayAllMatiere($bdd);
@@ -132,9 +150,9 @@
                
                <?php
                 
-                    if(isset($_POST["submit"])){
-                
-                    $req7 = addProf($_POST['email'], $_POST['nom'], $_POST['prenom'],$rep6['id_m'], $bdd);
+                    if(isset($_POST["submit"]))
+                    {
+                         $req7 = addProf($_POST['email'], $_POST['nom'], $_POST['prenom'],$rep6['id_m'], $bdd);
                     }
                 ?>
             </div>
