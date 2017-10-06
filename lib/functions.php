@@ -238,7 +238,7 @@
         {
           $_SESSION['classe'] = $rep['id_c'];
         }
-        header("Location:index.php?p=accueil");
+
       }
       else
       {
@@ -705,44 +705,8 @@ function displayMatiere($id_c, $bdd)
 
     return $req;
   }
+
 ?>
-<<<<<<< HEAD
-<!-- ================================= -->
-=======
-
-<?php
-    function AddNote($id_d, $id_s, $id_e, $note, $bdd)
-    {
-        $req = $bdd->prepare("INSERT INTO noter(id_d, id_s, id_e, note) VALUES (:id_d, :id_s, :id_e, :note)");
-        $req->bindValue('id_d', $id_d, PDO::PARAM_INT);
-        $req->bindValue('id_s', $id_s, PDO::PARAM_INT);
-        $req->bindValue('id_e',$id_e, PDO::PARAM_INT);
-        $req->bindValue('note',$note, PDO::PARAM_INT);
-
-        $req->execute();
-
-        return $req;
-    }
-?>
-
->>>>>>> 280853d25d064255a41290cf8ab67b45c8c20751
-<?php
-    function DisplayDevoir($id_m, $id_c, $bdd)
-    {
-        $req = $bdd->prepare("SELECT DISTINCT nom_d
-                              FROM devoirs d, matiere m, suivre s, classes c
-                              WHERE d.id_m = m.id_m
-                              AND m.id_m = s.id_m
-                              AND s.id_c = c.id_c
-                              AND c.id_c = :id_c");
-        $req->bindValue('id_m', $id_m, PDO::PARAM_INT);
-        $req->bindValue('id_c', $id_c, PDO::PARAM_INT);
-        $req->execute();
-
-         return $req;
-    }
-?>
-<!-- ================================= -->
 <?php
 function AddNote($id_d, $id_s, $id_e, $note, $bdd)
 {
@@ -758,6 +722,17 @@ function AddNote($id_d, $id_s, $id_e, $note, $bdd)
 
   return $req;
 }
+function DisplayDevoir($id_m, $bdd)
+{
+  $req = $bdd->prepare("SELECT DISTINCT nom_d, id_d
+    FROM devoirs d
+    WHERE d.id_m = :id_m
+    ");
+    $req->bindValue('id_m', $id_m, PDO::PARAM_INT);
+    $req->execute();
+
+    return $req;
+  }
 ?>
 
 
@@ -777,48 +752,4 @@ function AddNote($id_d, $id_s, $id_e, $note, $bdd)
     return $html;
   } */
 ?>
-
 <!-- =============================================================================================================================== -->
-
-<?php /*
-  session_start();
-  $pdo = dbConnect();
-
-  $userIp = $_SERVER['REMOTE_ADDR'];
-  $limite = $pdo->query("SELECT * ban WHERE ip = '$userip'")->fetch(PDO::FETCH_ASSOC)['limite'];
-
-  $isStillBanned = strtotime($limite) > strtotime(time()- 60*5);
-  if(isStillBanned){
-    unset($_SESSION['nbFailedAuth']);
-    $pdo->query("DELETE FROM ban WHERE ip = '$userIp' ");
-  }else{
-    die('Vous êtes ban !');
-  }
-
-  if($_POST){
-
-    $login = htmlentities($_POST['login']);
-    $mdp = sha1($_POST['mdp'])
-
-    $req = $pdo->prepare("SELECT COUNT(*) as nb FROM user WHERE login = :login AND mdp = :mdp");
-    $req->execute([$login, $mdp]);
-    $has = $req->fecth(PDO::FETCH_ASSOC)['nb'];
-    if($has){
-      header('Location: profil.php');
-      die();
-    }
-    else{
-      if(!isset($_SESSION['nbFailedAuth'])){
-        $_SESSION['nbFailedAuth'] = 1;
-      }
-      else{
-        $_SESSION['nbFailedAuth'] += 1;
-      }
-
-      if($_SESSION['nbFailedAuth'] > 3)
-      {
-        $pdo->query("INSERT INTO ban (ip) VALUES ('userIP')");
-      }
-    }
-  } */
-?>

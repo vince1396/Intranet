@@ -89,54 +89,145 @@
       
         
         <div class="row">
-            <div class="col-xs-12 bouton1"><button class="btn btn-info"><span class="glyphicon glyphicon-plus"></span><h4>Modifier Professeur</h4></button>
-                <button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span><h4>Ajouter Professeur</h4></button></div>
-            
-            <div class="col-xs-12 bouton1"><button class="btn btn-info"><span class="glyphicon glyphicon-plus"></span><h4>Modifier Matière</h4></button> <button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span><h4>Ajouter Matière</h4></button></div>
+                
+            <form method="post" action="#">
             <div class="col-xs-12 bouton1">
-               <button class="btn btn-info"><span class="glyphicon glyphicon-plus"></span><h4>Modifier Classe</h4></button>
+               <label type="text" class="btn btn-primary bouton1">Nom de la matière: <input type="text" name="nom_m" class="font_color"></label>
+                <button class="btn btn-success" type="submit" name="submit_matiere">
+                    <span class="glyphicon glyphicon-plus"></span><h4>Ajouter Matière</h4>
+                </button>
+            </div>
+            </form>
+            
+            <?php
+                
+                if(isset($_POST['submit_matiere']))
+                {
+                    $nom_m = $_POST['nom_m'];
+                    $req4 = $bdd->prepare("INSERT INTO matiere (nom_m) VALUES(:nom_m)");
+                    $req4->bindValue(':nom_m', $nom_m, PDO::PARAM_STR);
+                    $req4->execute();
+                }
+            
+            ?>
+            
+
+            <div class="col-xs-12 col-md-12 bouton1">
+              
                <form method="post">
-                   <label type="text" class="btn btn-primary ">Nom: <input type="text" name="nom" class="font_color"></label>
-                   <label type="text" class="btn btn-primary ">Prénom: <input type="text" name="prenom" class="font_color"></label>
-                   <label type="text" class="btn btn-primary ">Email: <input type="email" name="email" class="font_color"></label>
-                   <label class="btn btn-primary"><u><b>Classe:</b></u>
-                          <?php
-                            
-                                $req5 = displayAllClasse($bdd);
-                                
-                                while($rep5 = $req5->fetch())
-                                {
-                                    echo $rep5['nom_c']." <input type='checkbox' name='classe[]' value=".$rep5['id_c']."> ";
-                                }
-                       
-                          ?>  
-                   </label>
-                    <br>
-                   <label class="btn btn-primary"> <u><b>Matière:</b></u>
+                   <label type="email" class="btn btn-primary  bouton1">Email: <input type="email" name="email" class="font_color"></label>
+                   <label type="text" class="btn btn-primary bouton1 ">Mdp: <input type="password" name="mdp" class="font_color"></label>
+                   <label type="text" class="btn btn-primary bouton1 ">Nom: <input type="text" name="nom" class="font_color"></label>
+                   <label type="text" class="btn btn-primary bouton1 ">Prénom: <input type="text" name="prenom" class="font_color"></label>
+                   <label class="btn btn-primary bouton1"> <u><b>Matière:</b></u>
                             <?php
                             
                                 $req6 = displayAllMatiere($bdd);
                                 
                                 while($rep6 = $req6->fetch())
                                 {
-                                    echo $rep6['nom_m']." <input type='checkbox' name='matiere[]' value=".$rep6['id_m']."> ";
+                                    echo $rep6['nom_m']." <input type='checkbox' name='matiere' value=".$rep6['id_m']."> ";
                                 }
                         
                             ?>
                     </label>
-                    <br><br>
-                   <button class="btn btn-success" name="submit" type="submit">
+                    <br>
+                   <button class="btn btn-success" name="submitaddprof" type="submit">
                        <span class="glyphicon glyphicon-plus"></span><h5>Ajouter Professeur</h5>
                    </button>
                </form>
-               
-               <?php
+
+     <?php 
                 
-                    if(isset($_POST["submit"])){
-                
-                    $req7 = addProf($_POST['email'], $_POST['nom'], $_POST['prenom'],$rep6['id_m'], $bdd);
-                    }
+	if(isset($_POST['submitaddprof']))
+	{
+			$i = 0;
+            $email = $_POST["email"];
+            $mdp = $_POST["mdp"];
+			$nom = $_POST["nom"];
+			$prenom = $_POST["prenom"];
+        
+        if(empty($email))
+			{
+				$i++;
+				$message .= "Votre email est vide <br/>";
+			}
+        if(empty($mdp))
+			{
+				$i++;
+				$message .= "Votre mdp est vide <br/>";
+			}
+			if(empty($nom))
+			{
+				$i++;
+				$message .= "Votre nom est vide";
+			}
+			if (empty($prenom))
+			{
+				$i++;
+				$message .="Votre prenom est vide <br/>";
+			}
+			
+			if($i>0)
+			{
+				echo "Vous avez ".$i." erreurs<br/>";
+				echo $message;
+			}
+			
+		   $requete = $bdd->prepare("INSERT INTO prof(email,mdp,nom,prenom,lvl) VALUES(:email, :mdp, :nom, :prenom, 1)");
+        
+           $requete->bindValue(":email", $email, PDO::PARAM_STR);
+           $requete->bindValue(":mdp", sha1($mdp), PDO::PARAM_STR);
+           $requete->bindValue(":nom", $nom, PDO::PARAM_STR);
+           $requete->bindValue(":prenom", $prenom, PDO::PARAM_STR);
+           $requete->execute();
+        
+             foreach ($matiere as $key => $value)
+            {
+              $req1 = $bdd->prepare("INSERT INTO enseigner (id_p, id_m) VALUES (:id_p, :id_m)");
+              $req1->execute([$id_p, $value]);
+            }
+        header('location:'.BASE_URL.'/admin_prof');
+    }
+            
                 ?>
+
+                
+                
+                
+                
+                
+                <!--SUPPRESSION DE PROFFESSEUR -->
+                
+<?php
+        if(isset($_POST['submitsup']))
+            {
+                 $recupprof = $_POST['professeur'];
+                 $supprof = $bdd->query("DELETE FROM prof WHERE id_p='".$recupprof."'");
+                 header('location:'.BASE_URL.'/admin_prof');
+            }
+        ?>
+    <form method="post">
+        <label class="btn btn-primary bouton1"> <u><b>Supprimer un professeur:</b></u>
+            <select class="btn btn-info select_class" name="professeur">
+                <?php
+                        
+                        $req = displayProf($bdd);
+                        while($rep = $req->fetch())
+                        {
+                            echo"<option value=".$rep['id_p'].">".$rep['nom']." ".$rep['prenom']."</option>";
+                        }
+                    
+                    ?>
+            </select>
+        </label>
+        <button class="btn btn-danger" name="submitsup" type="submit">Supprimer</button>
+    </form>
+                
+                
+                
+                
+                
             </div>
         
     </div>
