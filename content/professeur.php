@@ -3,9 +3,9 @@
 
         <div class="row row1">
             <div class="col-xs-12">
-             
-            
-              <form class="" action="#" method="post">  
+
+
+              <form class="" action="#" method="post">
                 <span class="btn btn-info bouton1"> Matière :</span>
                 <select name="classe" class="btn btn-info select_class bouton1">
                  <?php
@@ -20,16 +20,13 @@
                 </form>
                   </div>
             </div>
-               
+
             <div class="row row1">
             <div class="col-xs-12">
-             
-            
-              <form class="" action="#" method="post">  
+
+
+              <form class="" action="#" method="post">
                 <span  class="btn btn-info bouton_titre bouton1">Classe :</span>
-
-                
-
                   <select name="classe" class="btn btn-info select_class bouton1">
                     <?php
                       $req = displayClasse($_SESSION['id'], $bdd);
@@ -41,10 +38,6 @@
                   </select>
                   <input type="submit" name="submit_classe" class="btn btn-success bouton1" value="Selectionner">
                 </form>
-
-                
-                
-            
             </div>
 
 
@@ -86,25 +79,25 @@
                 </h3></td>
             </tr>
             <?php } ?>
-            
+
         </table>
-           
+
             <div class="row">
             <div class="col-xs-12 col-md-12 bouton1">
-            
+
             <form method="post" action="#">
-            
+
             <span  class="btn btn-primary bouton_titre bouton1">Devoirs: </span>
             <select name="devoir" class="btn btn-info select_class bouton1">
                <?php
-              
+
                     $req5 = displayDevoir($rep1['id_m'], $_POST['classe'], $bdd);
                     while($rep5 = $req5->fetch())
                     {
                         echo"<option value=".$rep5["id_d"].">".$rep5["nom_d"]."</option>";
                     }
                ?>
-               
+
                 <option value="1">DST</option>
                 <option value="2">Partiel</option>
                 <option value="3">Contrôle 1</option>
@@ -113,7 +106,7 @@
             <span  class="btn btn-primary bouton_titre bouton1">Elève: </span>
                <select class="btn btn-info select_class bouton1" name="eleve">
                 <?php
-                        
+
                         if(isset($_POST["submit"]))
                         {
                             $req2 = displayEleve($_POST['classe'], $bdd);
@@ -126,15 +119,15 @@
             </select>
             <button class="btn btn-success" type="submit" name="ajouter_note"><h5><span class="glyphicon glyphicon-plus"></span>Ajouter une note</h5></button>
             </form>
-            
+
             <?php
-              
+
               if(isset($_POST['ajouter_note']))
               {
                   $req3 = AddNote($rep4['id_d'], $id_s, $rep2['id_e'], $note);
               }
             ?>
-                        
+
             </div>
           </div> <?php
           }
